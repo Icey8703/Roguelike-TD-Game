@@ -8,7 +8,6 @@ public class WaveLayoutManager : MonoBehaviour
     public Transform enemyPrefab;
 
     public float waveTimeGap = 5f;
-    //public float shopCountdown = 45f;
     private float generalCountdown = 2f;
     private string[,] waves;
 
@@ -22,7 +21,7 @@ public class WaveLayoutManager : MonoBehaviour
     void Update()
     {
 
-        if (/*shopCountdown <= 0f || */generalCountdown <= 0f)
+        if (generalCountdown <= 0f)
         {
 
             SpawnWave();
