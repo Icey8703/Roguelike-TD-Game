@@ -1,22 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class WaveLayoutManager : MonoBehaviour
 {
 
     public Transform enemyPrefab;
+    public Transform spawnPointPart;
 
     public float waveTimeGap = 5f;
     private float generalCountdown = 2f;
-    private string[,] waves;
-
-    private void Awake()
-    {
-
-        waves = new string[,] { { "NormalEnemy 6 1" }, { "NormalEnemy 12 0.5" }, { "NormalEnemy 25 0.25" } };
-
-    }
+    private int waveNum = 1;
 
     void Update()
     {
@@ -36,9 +31,22 @@ public class WaveLayoutManager : MonoBehaviour
     void SpawnWave()
     {
 
-        Debug.Log("Wave Spawning");
+        for (int i = 0; i < waveNum * 3; i++)
+        {
+
+            SpawnEnemy();
+
+        }
+
+        waveNum++;
 
 
+    }
+
+    void SpawnEnemy()
+    {
+
+        Instantiate(enemyPrefab, spawnPointPart.position, spawnPointPart.rotation);
 
     }
 
