@@ -9,6 +9,7 @@ public class EnemyMovementScript : MonoBehaviour
     public float movementSpeed = 5f;
     private Transform target;
     private int waypointIndex = 0;
+
     void Start()
     {
 
