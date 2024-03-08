@@ -54,7 +54,6 @@ public class WaveLayoutManager : MonoBehaviour
         }
 
         allSpawned = true;
-
         waveNum++;
 
 
