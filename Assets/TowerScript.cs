@@ -99,16 +99,20 @@ public class TowerScript : MonoBehaviour
                 int enemyWaypoint = enemyScript.waypointIndex;
                 float enemyWaypointdistance = Vector3.Magnitude(enemy.transform.position - Waypoints.waypoints[enemyWaypoint].position);
 
-                if (enemyWaypoint > firstEnemyWaypoint)
+                if (enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(transform.position, first.transform.position) <= range)
                 {
 
                     first = enemy;
+                    firstEnemyWaypoint = enemyWaypoint;
+                    firstEnemyWaypointDistance = enemyWaypointdistance;
 
                 }
                 else if (enemyWaypoint == firstEnemyWaypoint && enemyWaypointdistance <= firstEnemyWaypointDistance && Vector3.Distance(transform.position, enemy.transform.position) <= range)
                 {
 
                     first = enemy;
+                    firstEnemyWaypoint = enemyWaypoint;
+                    firstEnemyWaypointDistance = enemyWaypointdistance;
 
                 }
                 
@@ -120,7 +124,7 @@ public class TowerScript : MonoBehaviour
 
                 targetedEnemy = first.transform;
 
-            } else if (Vector3.Distance(transform.position, first.transform.position) > range)
+            } else if (Vector3.Distance(transform.position, first.transform.position) >= range)
             {
 
                 first = null;
