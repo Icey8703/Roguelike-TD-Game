@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,7 +10,11 @@ public class TowerScript : MonoBehaviour
 
     public Transform targetedEnemy;
     public float range = 15.0f;
-    
+    public float turnSpeed = 10f;
+    private string[] targetingModes = { "first", "close" };
+    private int targetingModeIndex = 0;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +35,8 @@ public class TowerScript : MonoBehaviour
 
         }
 
+        UpdateTowerRotation();
+
     }
 
     void OnDrawGizmosSelected()
@@ -43,32 +51,100 @@ public class TowerScript : MonoBehaviour
     {
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        float closestEnemyDistance = Mathf.Infinity;
-        GameObject closest = null;
-        foreach (GameObject enemy in enemies)
+
+        if (targetingModes[targetingModeIndex].Equals("close"))
         {
 
-            float enemyDistance = Vector3.Distance(transform.position, enemy.transform.position);
-
-            if (enemyDistance < closestEnemyDistance)
+            float closestEnemyDistance = Mathf.Infinity;
+            GameObject closest = null;
+            foreach (GameObject enemy in enemies)
             {
-                closestEnemyDistance = enemyDistance;
-                closest = enemy;
+
+                float enemyDistance = Vector3.Distance(transform.position, enemy.transform.position);
+
+                if (enemyDistance < closestEnemyDistance)
+                {
+                    closestEnemyDistance = enemyDistance;
+                    closest = enemy;
+
+                }
+
+            }
+
+            if (closest != null && closestEnemyDistance <= range)
+            {
+
+                targetedEnemy = closest.transform;
+
+            }
+            else if (closestEnemyDistance >= range)
+            {
+
+                targetedEnemy = null;
 
             }
 
         }
-
-        if (closest != null && closestEnemyDistance <= range)
+        else if (targetingModes[targetingModeIndex].Equals("first"))
         {
+            float firstEnemyWaypoint = Mathf.NegativeInfinity;
+            float firstEnemyWaypointDistance = Mathf.Infinity;
+            GameObject first = null;
+            
 
-            targetedEnemy = closest.transform;
+            foreach(GameObject enemy in enemies)
+            {
+
+                EnemyMovementScript enemyScript = enemy.GetComponent<EnemyMovementScript>();
+                int enemyWaypoint = enemyScript.waypointIndex;
+                float enemyWaypointdistance = Vector3.Magnitude(enemy.transform.position - Waypoints.waypoints[enemyWaypoint].position);
+
+                if (enemyWaypoint > firstEnemyWaypoint)
+                {
+
+                    first = enemy;
+
+                }
+                else if (enemyWaypoint == firstEnemyWaypoint && enemyWaypointdistance <= firstEnemyWaypointDistance && Vector3.Distance(transform.position, enemy.transform.position) <= range)
+                {
+
+                    first = enemy;
+
+                }
+                
+
+            }
+            
+            if (first != null && Vector3.Distance(transform.position, first.transform.position) <= range)
+            {
+
+                targetedEnemy = first.transform;
+
+            } else if (Vector3.Distance(transform.position, first.transform.position) > range)
+            {
+
+                first = null;
+
+            }
 
         }
-        else if (closestEnemyDistance >= range)
+        
+
+    }
+
+    void UpdateTowerRotation()
+    {
+
+        if (targetedEnemy != null)
         {
 
-            targetedEnemy = null;
+            Vector3 enemyDirection = targetedEnemy.transform.position - transform.position;
+            Quaternion turretAim = Quaternion.LookRotation(enemyDirection);
+            Vector3 rotation = Quaternion.Lerp(transform.rotation, turretAim, Time.deltaTime * turnSpeed).eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            
+
+
 
         }
 

@@ -7612,8 +7612,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b43611dc2afc238448f87d5728f6fe94, type: 2}
+  m_sharedMaterial: {fileID: 2021168500792659552, guid: b43611dc2afc238448f87d5728f6fe94, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15453,6 +15453,10 @@ PrefabInstance:
     - target: {fileID: 2425469973403675084, guid: 6b7575b3a8d90d649834b95108948ab3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755831246974275797, guid: 6b7575b3a8d90d649834b95108948ab3, type: 3}
+      propertyPath: turnSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5610876860210902834, guid: 6b7575b3a8d90d649834b95108948ab3, type: 3}
       propertyPath: m_Name
