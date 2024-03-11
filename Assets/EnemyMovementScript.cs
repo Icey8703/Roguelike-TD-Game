@@ -8,7 +8,8 @@ public class EnemyMovementScript : MonoBehaviour
 
     public float movementSpeed = 5f;
     private Transform target;
-    private int waypointIndex = 0;
+    public int waypointIndex = 0;
+    public float distanceToNextWaypoint;
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class EnemyMovementScript : MonoBehaviour
     {
 
         Vector3 direction = target.position - transform.position;
-
+        distanceToNextWaypoint = direction.magnitude;
         transform.Translate(direction.normalized * movementSpeed * Time.deltaTime, Space.World);
 
         if (Vector3.Distance(transform.position, target.position) <= 0.22f)
