@@ -33,12 +33,6 @@ public class EnemyMovementScript : MonoBehaviour
 
         }
 
-        if (health <= 0f) {
-
-            destroy(this);
-
-        }
-
     }
 
     void GetNextWaypoint()
@@ -54,6 +48,19 @@ public class EnemyMovementScript : MonoBehaviour
 
         waypointIndex++;
         target = Waypoints.waypoints[waypointIndex];
+
+    }
+
+    public void TakeDamage(float damageDealt) 
+    {
+
+        health -= damageDealt;
+
+        if (health <= 0f) {
+
+            Destroy(gameObject);
+
+        }
 
     }
 

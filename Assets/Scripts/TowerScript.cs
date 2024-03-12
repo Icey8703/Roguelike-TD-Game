@@ -20,6 +20,7 @@ public class TowerScript : MonoBehaviour
     private string[] targetingModes = { "first", "close" };
     public int targetingModeIndex = 0;
     public float firerate = 2f;
+    public float projectileDamage = 1f;
     private float firingCountdown = 0f;
 
     // Start is called before the first frame update
@@ -177,7 +178,7 @@ public class TowerScript : MonoBehaviour
         {
 
             // Implement items **later** but this should be a decent way to implement them
-            projectile.SeekTarget(targetedEnemy, 1/* + (2 * damageItemCount)*/, 80);
+            projectile.SeekTarget(targetedEnemy, projectileDamage/* + (2 * damageItemCount)*/, 80);
 
         }
 

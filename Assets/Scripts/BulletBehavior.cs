@@ -30,7 +30,7 @@ public class BulletBehavior : MonoBehaviour
         if (targetEnemy == null)
         {
 
-            Destroy(this); return;
+            Destroy(gameObject); return;
 
         }
 
@@ -52,12 +52,9 @@ public class BulletBehavior : MonoBehaviour
     void Impact()
     {
 
-        if (TryGetComponent(out EnemyMovementScript targetMoveScript))
-        {
-
-            targetMoveScript.health -= damage;
-        
-        }
+        targetEnemy.TakeDamage(damage);
+        // possible pierce implementation using a conditional and a field. **make sure it doesn't lock onto the same enemy(s) that it has already hit**
+        Destroy(gameObject);
 
     }
 
