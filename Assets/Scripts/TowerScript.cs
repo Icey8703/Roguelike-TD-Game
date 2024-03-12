@@ -176,7 +176,8 @@ public class TowerScript : MonoBehaviour
         if (projectile != null)
         {
 
-            projectile.SeekTarget(targetedEnemy);
+            // Implement items **later** but this should be a decent way to implement them
+            projectile.SeekTarget(targetedEnemy, 1/* + (2 * damageItemCount)*/, 80);
 
         }
 

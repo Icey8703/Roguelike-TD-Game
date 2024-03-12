@@ -5,13 +5,22 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     private Transform targetEnemy;
-    public float projectileSpeed = 80f;
+    private float projectileSpeed = 80f;
+    private float damage = 1f;
 
-    public void SeekTarget(Transform _targetEnemy)
+    public void SeekTarget(Transform _targetEnemy) 
     {
 
         targetEnemy = _targetEnemy;
 
+    }
+
+    public void SeekTarget(Transform _targetEnemy, float _damage, float _projectileSpeed)
+    {
+
+        targetEnemy = _targetEnemy;
+        damage = _damage;
+        projectileSpeed = _projectileSpeed;
 
     }
 
@@ -43,7 +52,12 @@ public class BulletBehavior : MonoBehaviour
     void Impact()
     {
 
-        Debug.Log("impact");
+        if (TryGetComponent(out EnemyMovementScript targetMoveScript))
+        {
+
+            targetMoveScript.health -= damage;
+        
+        }
 
     }
 

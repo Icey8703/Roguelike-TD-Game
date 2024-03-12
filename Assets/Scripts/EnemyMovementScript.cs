@@ -7,6 +7,7 @@ public class EnemyMovementScript : MonoBehaviour
 {
 
     public float movementSpeed = 5f;
+    public float health = 10f;
     private Transform target;
     public int waypointIndex = 0;
     public float distanceToNextWaypoint;
@@ -29,6 +30,12 @@ public class EnemyMovementScript : MonoBehaviour
         {
 
             GetNextWaypoint();
+
+        }
+
+        if (health <= 0f) {
+
+            destroy(this);
 
         }
 
