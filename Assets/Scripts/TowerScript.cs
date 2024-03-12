@@ -10,18 +10,24 @@ public class TowerScript : MonoBehaviour
 {
 
     public Transform targetedEnemy;
+    public Transform firePoint;
+    public GameObject bullet;
+
+    [Header("Stats/Attributes")]
+
     public float range = 15.0f;
     public float turnSpeed = 10f;
     private string[] targetingModes = { "first", "close" };
     public int targetingModeIndex = 0;
-
-
+    public float firerate = 2f;
+    private float firingCountdown = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
 
         InvokeRepeating("UpdateTargetedEnemy", 0f, 0.1f);
+        
 
     }
 
@@ -37,6 +43,16 @@ public class TowerScript : MonoBehaviour
         }
 
         UpdateTowerRotation();
+
+        if (firingCountdown <= 0f)
+        {
+
+            Attack();
+            firingCountdown = 1f / firerate;
+
+        }
+
+        firingCountdown -= Time.deltaTime;
 
     }
 
@@ -146,6 +162,21 @@ public class TowerScript : MonoBehaviour
             
 
 
+
+        }
+
+    }
+
+    void Attack()
+    {
+
+        GameObject projectileGameObject = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
+        BulletBehavior projectile = projectileGameObject.GetComponent<BulletBehavior>();
+        
+        if (projectile != null)
+        {
+
+            projectile.SeekTarget(targetedEnemy);
 
         }
 
