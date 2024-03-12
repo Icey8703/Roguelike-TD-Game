@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class TowerScript : MonoBehaviour
@@ -12,7 +13,7 @@ public class TowerScript : MonoBehaviour
     public float range = 15.0f;
     public float turnSpeed = 10f;
     private string[] targetingModes = { "first", "close" };
-    private int targetingModeIndex = 0;
+    public int targetingModeIndex = 0;
 
 
 
@@ -49,6 +50,7 @@ public class TowerScript : MonoBehaviour
 
     void UpdateTargetedEnemy()
     {
+        
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -87,8 +89,9 @@ public class TowerScript : MonoBehaviour
         }
         else if (targetingModes[targetingModeIndex].Equals("first"))
         {
-            float firstEnemyWaypoint = Mathf.NegativeInfinity;
+            float firstEnemyWaypoint = -1;
             float firstEnemyWaypointDistance = Mathf.Infinity;
+            float firstEnemyDistance = Mathf.Infinity;
             GameObject first = null;
             
 
@@ -97,37 +100,31 @@ public class TowerScript : MonoBehaviour
 
                 EnemyMovementScript enemyScript = enemy.GetComponent<EnemyMovementScript>();
                 int enemyWaypoint = enemyScript.waypointIndex;
-                float enemyWaypointdistance = Vector3.Magnitude(enemy.transform.position - Waypoints.waypoints[enemyWaypoint].position);
+                float enemyWaypointDistance = Vector3.Distance(enemy.transform.position, Waypoints.waypoints[enemyWaypoint].position);
 
-                if (enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(transform.position, first.transform.position) <= range)
+                if ((enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(transform.position, enemy.transform.position) <= range) || (enemyWaypoint == firstEnemyWaypoint && enemyWaypointDistance <= firstEnemyWaypointDistance && Vector3.Distance(transform.position, enemy.transform.position) <= range))
                 {
 
                     first = enemy;
                     firstEnemyWaypoint = enemyWaypoint;
-                    firstEnemyWaypointDistance = enemyWaypointdistance;
-
-                }
-                else if (enemyWaypoint == firstEnemyWaypoint && enemyWaypointdistance <= firstEnemyWaypointDistance && Vector3.Distance(transform.position, enemy.transform.position) <= range)
-                {
-
-                    first = enemy;
-                    firstEnemyWaypoint = enemyWaypoint;
-                    firstEnemyWaypointDistance = enemyWaypointdistance;
+                    firstEnemyWaypointDistance = enemyWaypointDistance;
+                    firstEnemyDistance = Vector3.Distance(transform.position, enemy.transform.position);
 
                 }
                 
 
             }
             
-            if (first != null && Vector3.Distance(transform.position, first.transform.position) <= range)
+            if (first != null && firstEnemyDistance <= range)
             {
 
                 targetedEnemy = first.transform;
 
-            } else if (Vector3.Distance(transform.position, first.transform.position) >= range)
+            } else if (firstEnemyDistance >= range)
             {
 
-                first = null;
+                
+                targetedEnemy = null;
 
             }
 

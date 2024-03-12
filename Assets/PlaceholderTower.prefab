@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b437117f7ff59d94dab0b1af6a8db761, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,10 +121,10 @@ GameObject:
   - component: {fileID: 3554086327602358864}
   - component: {fileID: 2886723553105324866}
   - component: {fileID: 5718180921375109585}
-  - component: {fileID: 2755831246974275797}
+  - component: {fileID: 5659933526707257902}
   m_Layer: 0
   m_Name: PlaceholderTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8218aec0ebfd0c246a2e5d1d23aa61f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,7 +218,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2755831246974275797
+--- !u!114 &5659933526707257902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,3 +232,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetedEnemy: {fileID: 0}
   range: 15
+  turnSpeed: 10
+  targetingModeIndex: 0
