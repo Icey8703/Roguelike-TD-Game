@@ -5,6 +5,8 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 
 {
+    // copied from a youtube tutorial because it has no value in the project
+    // link: <find it later>
     MeshRenderer cubeMeshRenderer;
     [SerializeField][Range(0f, 1f)] float lerpTime;
     [SerializeField] Color[] colors;
