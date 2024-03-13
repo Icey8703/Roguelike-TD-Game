@@ -9,17 +9,18 @@ using UnityEngine.UIElements;
 public class TowerScript : MonoBehaviour
 {
 
-    public Transform targetedEnemy;
-    public Transform firePoint;
-    public GameObject bullet;
-    public Transform rotPart;
-
+    [SerializeField] private Transform targetedEnemy;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform rotPart;
+    [SerializeField] private GameObject targetingDropdownMenu;
+    [SerializeField] private int targetingModeIndex = 0;
+    
     [Header("Stats/Attributes")]
 
     public float range = 15.0f;
     public float turnSpeed = 25f;
     private string[] targetingModes = { "first", "close" };
-    public int targetingModeIndex = 0;
     public float firerate = 2f;
     public float projectileDamage = 1f;
     private float firingCountdown = 0f;
@@ -29,7 +30,7 @@ public class TowerScript : MonoBehaviour
     {
 
         InvokeRepeating("UpdateTargetedEnemy", 0f, 0.1f);
-        
+        targetingDropdownMenu = GameObject.Find("TowerTargetingDropdown");
 
     }
 
@@ -71,6 +72,10 @@ public class TowerScript : MonoBehaviour
         
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        
+        TMPro.TMP_Dropdown targetingModeDropdown = targetingDropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
+        targetingModeIndex = targetingModeDropdown.value;
 
         if (targetingModes[targetingModeIndex].Equals("close"))
         {
@@ -120,7 +125,8 @@ public class TowerScript : MonoBehaviour
                 int enemyWaypoint = enemyScript.waypointIndex;
                 float enemyWaypointDistance = Vector3.Distance(enemy.transform.position, Waypoints.waypoints[enemyWaypoint].position);
 
-                if ((enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(transform.position, enemy.transform.position) <= range) || (enemyWaypoint == firstEnemyWaypoint && enemyWaypointDistance <= firstEnemyWaypointDistance && Vector3.Distance(transform.position, enemy.transform.position) <= range))
+                if ((enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(transform.position, enemy.transform.position) <= range)
+                    || (enemyWaypoint == firstEnemyWaypoint && enemyWaypointDistance <= firstEnemyWaypointDistance && Vector3.Distance(transform.position, enemy.transform.position) <= range))
                 {
 
                     first = enemy;

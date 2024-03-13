@@ -50,9 +50,10 @@ MonoBehaviour:
   firePoint: {fileID: 6277642476145899486}
   bullet: {fileID: 6816986076684901406, guid: d33b4959e39acf1468d17b0104ef013c, type: 3}
   rotPart: {fileID: 5544898975165580329}
+  targetingDropdownMenu: {fileID: 6196437783938741481, guid: cfaf3009be316c44b9d9505bfcfbbe24, type: 3}
+  targetingModeIndex: 0
   range: 15
   turnSpeed: 25
-  targetingModeIndex: 0
   firerate: 15
   projectileDamage: 1
 --- !u!1 &3786104590335552142
