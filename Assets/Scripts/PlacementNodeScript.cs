@@ -19,7 +19,7 @@ public class PlacementNodeScript : MonoBehaviour
         // Sets the default color to its normal color
         defaultColor = rend.material.color;
         // Sets up the placement offset
-        placementOffset = new Vector3(0f, 1.175f, 0f);
+        placementOffset = new Vector3(0f, 1.175f, -5f);
 
     }
 

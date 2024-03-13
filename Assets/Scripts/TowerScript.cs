@@ -15,6 +15,7 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private Transform rotPart;
     [SerializeField] private GameObject targetingDropdownMenu;
     [SerializeField] private int targetingModeIndex = 0;
+    [SerializeField] private Transform mainBody;
     
     [Header("Stats/Attributes")]
 
@@ -29,7 +30,7 @@ public class TowerScript : MonoBehaviour
     void Start()
     {
 
-        InvokeRepeating("UpdateTargetedEnemy", 0f, 0.1f);
+        InvokeRepeating("UpdateTargetedEnemy", 0f, 0.025f);
         targetingDropdownMenu = GameObject.Find("TowerTargetingDropdown");
 
     }
@@ -62,8 +63,8 @@ public class TowerScript : MonoBehaviour
     void OnDrawGizmosSelected()
     {
 
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(mainBody.position, range);
 
     }
 
@@ -85,7 +86,7 @@ public class TowerScript : MonoBehaviour
             foreach (GameObject enemy in enemies)
             {
 
-                float enemyDistance = Vector3.Distance(transform.position, enemy.transform.position);
+                float enemyDistance = Vector3.Distance(mainBody.position, enemy.transform.position);
 
                 if (enemyDistance < closestEnemyDistance)
                 {
@@ -125,14 +126,14 @@ public class TowerScript : MonoBehaviour
                 int enemyWaypoint = enemyScript.waypointIndex;
                 float enemyWaypointDistance = Vector3.Distance(enemy.transform.position, Waypoints.waypoints[enemyWaypoint].position);
 
-                if ((enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(transform.position, enemy.transform.position) <= range)
-                    || (enemyWaypoint == firstEnemyWaypoint && enemyWaypointDistance <= firstEnemyWaypointDistance && Vector3.Distance(transform.position, enemy.transform.position) <= range))
+                if ((enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(mainBody.position, enemy.transform.position) <= range)
+                    || (enemyWaypoint == firstEnemyWaypoint && enemyWaypointDistance <= firstEnemyWaypointDistance && Vector3.Distance(mainBody.position, enemy.transform.position) <= range))
                 {
 
                     first = enemy;
                     firstEnemyWaypoint = enemyWaypoint;
                     firstEnemyWaypointDistance = enemyWaypointDistance;
-                    firstEnemyDistance = Vector3.Distance(transform.position, enemy.transform.position);
+                    firstEnemyDistance = Vector3.Distance(mainBody.position, enemy.transform.position);
 
                 }
                 

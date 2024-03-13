@@ -4107,7 +4107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerObject: {fileID: 0}
-  GatlingSentry: {fileID: 865026320101763425, guid: 2c7e90ed72cb8854894db857699627cd, type: 3}
+  GatlingSentry: {fileID: 2473228221068675640, guid: e59a5e64790d722459cf08468dd64046, type: 3}
 --- !u!1001 &589849093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4511,6 +4511,94 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7839652999348607414, guid: b5d50dcf8efadf94d98a9296540d2856, type: 3}
   m_PrefabInstance: {fileID: 629703584}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &634011156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 634011157}
+  - component: {fileID: 634011160}
+  - component: {fileID: 634011159}
+  - component: {fileID: 634011158}
+  m_Layer: 5
+  m_Name: ShopPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &634011157
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634011156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.95, y: 0.7, z: 0.95}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 802930673}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 90}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &634011158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634011156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fac56ca6847ee743b500c8a5ff11a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &634011159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634011156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &634011160
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634011156}
+  m_CullTransparentMesh: 1
 --- !u!1001 &646100176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5515,8 +5603,9 @@ GameObject:
   - component: {fileID: 782527589}
   - component: {fileID: 782527588}
   - component: {fileID: 782527587}
+  - component: {fileID: 782527590}
   m_Layer: 5
-  m_Name: ShopOpenerButton
+  m_Name: ShopToggleButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5624,6 +5713,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782527585}
   m_CullTransparentMesh: 1
+--- !u!114 &782527590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782527585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6e4c9dda0e7d04e857a2ccf801ee8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopToggle: {fileID: 782527587}
+  shopPanel: {fileID: 634011156}
 --- !u!1001 &787543927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5845,6 +5948,7 @@ RectTransform:
   - {fileID: 1049600901}
   - {fileID: 3547274466856764533}
   - {fileID: 782527586}
+  - {fileID: 634011157}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
