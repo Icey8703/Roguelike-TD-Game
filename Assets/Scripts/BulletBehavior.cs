@@ -45,6 +45,7 @@ public class BulletBehavior : MonoBehaviour
 
         }
 
+        
         transform.Translate(direction.normalized * distanceOnFrame, Space.World);
 
     }
@@ -52,7 +53,8 @@ public class BulletBehavior : MonoBehaviour
     void Impact()
     {
 
-        targetEnemy.TakeDamage(damage);
+        EnemyMovementScript enemyBehavior = targetEnemy.GetComponent<EnemyMovementScript>();
+        enemyBehavior.TakeDamage(damage);
         // possible pierce implementation using a conditional and a field. **make sure it doesn't lock onto the same enemy(s) that it has already hit**
         Destroy(gameObject);
 

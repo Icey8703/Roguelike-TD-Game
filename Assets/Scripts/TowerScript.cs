@@ -12,11 +12,12 @@ public class TowerScript : MonoBehaviour
     public Transform targetedEnemy;
     public Transform firePoint;
     public GameObject bullet;
+    public Transform rotPart;
 
     [Header("Stats/Attributes")]
 
     public float range = 15.0f;
-    public float turnSpeed = 10f;
+    public float turnSpeed = 25f;
     private string[] targetingModes = { "first", "close" };
     public int targetingModeIndex = 0;
     public float firerate = 2f;
@@ -158,8 +159,8 @@ public class TowerScript : MonoBehaviour
 
             Vector3 enemyDirection = targetedEnemy.transform.position - transform.position;
             Quaternion turretAim = Quaternion.LookRotation(enemyDirection);
-            Vector3 rotation = Quaternion.Lerp(transform.rotation, turretAim, Time.deltaTime * turnSpeed).eulerAngles;
-            transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            Vector3 rotation = Quaternion.Lerp(rotPart.rotation, turretAim, Time.deltaTime * turnSpeed).eulerAngles;
+            rotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
             
 
 
