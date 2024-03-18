@@ -6,6 +6,7 @@ public class ShopManager : MonoBehaviour
 {
 
     public static ShopManager shopInstance;
+    [SerializeField] private Transform[] shopOptions;
 
     private void Awake()
     {
@@ -18,9 +19,29 @@ public class ShopManager : MonoBehaviour
 
         }
 
+        shopOptions = new Transform[5];
+
+        for (int i = 1; i <= 5; i++)
+        {
+
+            shopOptions[i - 1] = transform.Find("ShopOption" + i);
+
+        }
+
         shopInstance = this;
 
     }
 
+    public void RefreshShop()
+    {
+
+        foreach (Transform option in shopOptions)
+        {
+
+            option.gameObject.SetActive(true);
+
+        }
+
+    }
 
 }
