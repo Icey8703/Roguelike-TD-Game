@@ -25,6 +25,12 @@ public class WaveLayoutManager : MonoBehaviour
         {
 
             allSpawned = false;
+            if (ShopManager.shopInstance != null)
+            {
+
+                ShopManager.shopInstance.RefreshShop();
+
+            }
             StartCoroutine(SpawnWave());
             generalCountdown = Mathf.Floor((waveTimeGapScale * waveNum) / Mathf.Sqrt(waveNum * 2));
 
@@ -46,8 +52,6 @@ public class WaveLayoutManager : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-
-        ShopManager.shopInstance.RefreshShop();
 
         for (int i = 0; i < Math.Ceiling(Math.Pow(Math.E, waveNum) / 5) + 2; i++)
         {

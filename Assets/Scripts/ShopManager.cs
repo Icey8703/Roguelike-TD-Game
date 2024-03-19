@@ -29,6 +29,7 @@ public class ShopManager : MonoBehaviour
         }
 
         shopInstance = this;
+        shopInstance.gameObject.SetActive(false);
 
     }
 

@@ -12,6 +12,7 @@ public class ShopOptionManager : MonoBehaviour
     {
 
         shopOption.onClick.AddListener(onClicked);
+        gameObject.SetActive(false);
 
     }
 
