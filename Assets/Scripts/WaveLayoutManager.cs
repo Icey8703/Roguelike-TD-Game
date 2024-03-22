@@ -16,6 +16,7 @@ public class WaveLayoutManager : MonoBehaviour
     public float waveTimeGapScale = 15f;
     private float generalCountdown = 2f;
     [SerializeField] private int waveNum = 1;
+    [SerializeField] private int refreshCountdown = 1;
     private bool allSpawned = false;
 
     void Update()
@@ -24,11 +25,14 @@ public class WaveLayoutManager : MonoBehaviour
         if (generalCountdown <= 0f)
         {
 
+            refreshCountdown--;
+
             allSpawned = false;
-            if (ShopManager.shopInstance != null)
+            if (ShopManager.shopInstance != null && refreshCountdown == 0)
             {
 
                 ShopManager.shopInstance.RefreshShop();
+                refreshCountdown = 5;
 
             }
             StartCoroutine(SpawnWave());

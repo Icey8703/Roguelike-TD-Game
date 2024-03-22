@@ -27,6 +27,13 @@ public class PlacementNodeScript : MonoBehaviour
     private void OnMouseDown()
     {
         
+        if (ShopManager.shopInstance.gameObject.activeSelf)
+        {
+
+            return;
+
+        }
+
         // if the tower slot is already taken(it isn't null)
         if (tower != null)
         {
