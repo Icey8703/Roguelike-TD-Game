@@ -23,5 +23,4 @@ public class ShopOptionManager : MonoBehaviour
 
     }
 
-
 }

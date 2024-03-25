@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -57,8 +58,9 @@ public class ItemInventoryManager : MonoBehaviour
 
     public void AddItemToTower(string towerName, int itemID)
     {
-
-
+        
+        // increment the count of items of said ID(just an int that corresponds to the order in which it was added)
+        towerInventories[towerName][itemID - 1][1]++;
 
     }
 

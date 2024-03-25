@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using TMPro.Examples;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
 
     public static ShopManager shopInstance;
     [SerializeField] private Transform[] shopOptions;
+    [SerializeField] private string[] commonItemList;
 
     private void Awake()
     {
@@ -31,6 +35,8 @@ public class ShopManager : MonoBehaviour
         shopInstance = this;
         shopInstance.gameObject.SetActive(false);
 
+        commonItemList = new string[] { "Auto\nSear", "HP\nRounds", "Tracking\nModule" };
+
     }
 
     public void RefreshShop()
@@ -38,6 +44,15 @@ public class ShopManager : MonoBehaviour
 
         foreach (Transform option in shopOptions)
         {
+
+            if (Random.Range(0f, 100f) <= 73.2f)
+            {
+
+                Transform optionName = option.Find("Name");
+                TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
+                optionText.SetText(commonItemList[Mathf.FloorToInt(Random.Range(0, commonItemList.Length))]);
+
+            }
 
             option.gameObject.SetActive(true);
 
