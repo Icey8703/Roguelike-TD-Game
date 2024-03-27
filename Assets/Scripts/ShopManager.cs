@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour
     private void Awake()
     {
 
+        // if a global shop manager already exists, prevent a duplicate being created
         if (shopInstance != null)
         {
 
@@ -23,8 +24,10 @@ public class ShopManager : MonoBehaviour
 
         }
 
+        // create the shop options array to hold each option in the shop
         shopOptions = new Transform[5];
 
+        // add the shop options to the array for ease of access
         for (int i = 1; i <= 5; i++)
         {
 
@@ -32,9 +35,12 @@ public class ShopManager : MonoBehaviour
 
         }
 
+        // set the shop instance to this object
         shopInstance = this;
+        // deactivate the shop for no obstruction
         shopInstance.gameObject.SetActive(false);
 
+        // initialize the items for commons
         commonItemList = new string[] { "Auto\nSear", "HP\nRounds", "Tracking\nModule" };
 
     }
@@ -45,6 +51,7 @@ public class ShopManager : MonoBehaviour
         foreach (Transform option in shopOptions)
         {
 
+            // set the options to active, changes their purchased field to false, and rolls a 1 to 100 chance for item choice
             option.gameObject.SetActive(true);
             option.GetComponent<ShopOptionManager>().purchased = false;
             float roll = Random.Range(0f, 100f);
@@ -82,9 +89,11 @@ public class ShopManager : MonoBehaviour
     public void Update()
     {
         
+        // if there IS a shop manager global and its active
         if (shopInstance != null && shopInstance.gameObject.activeSelf)
         {
 
+            // sets the active state of the shop options to the opposite of its purchased state
             foreach (Transform option in shopOptions)
             {
 

@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class TowerScript : MonoBehaviour
 {
 
+    // assorted functionality fields
     [SerializeField] private Transform targetedEnemy;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject bullet;
@@ -22,6 +23,7 @@ public class TowerScript : MonoBehaviour
     
     [Header("Stats/Attributes")]
 
+    // stats/attributes fields
     public float range = 15.0f;
     private string[] targetingModes = { "first", "close" };
     public float firerate = 2f;
@@ -42,10 +44,12 @@ public class TowerScript : MonoBehaviour
     void Update()
     {
 
+        // update the stats in accordance with items the tower has
         range = 15.0f * (1 + (inventoryManager.GetTowerItems(towerNameVal)[2][1] * 0.05f));
         projectileDamage = 1 + (0.5f * inventoryManager.GetTowerItems(towerNameVal)[1][1]);
         autoSearCount = inventoryManager.GetTowerItems(towerNameVal)[0][1];
 
+        
         if (firingCountdown <= 0f)
         {
 

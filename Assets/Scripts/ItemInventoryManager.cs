@@ -17,17 +17,21 @@ public class ItemInventoryManager : MonoBehaviour
     [SerializeField] private Dictionary<string, int[][]> towerInventories;
     private string[] towerNames;
     private int[][] defaultItemCounts;
+
     private void Awake()
     {
 
+        // checks if there is already an inventory manager in the scene
         if (instance != null)
         {
 
+            // prevents initialization of the global inventory manager
             Debug.Log("an ItemInventoryManager instance already exists in the scene");
             return;
 
         }
 
+        // if there is none, initialize things
         instance = this;
         towerNames = new string[]{ "Gatling" };
         defaultItemCounts = new int[][]{ (new int[] { 1, 0 }), (new int[] { 2, 0 }), (new int[] { 3, 0 })};
@@ -38,6 +42,7 @@ public class ItemInventoryManager : MonoBehaviour
     void Start()
     {
         
+        // initializing the dictionary
         towerInventories = new Dictionary<string, int[][]>();
 
         foreach (string tower in towerNames)
@@ -57,16 +62,28 @@ public class ItemInventoryManager : MonoBehaviour
 
     }
 
+    // returns the items a tower has
     public int[][] GetTowerItems(string towerName)
     {
 
-        return towerInventories[towerName];
+        // tries to return it, catches a KeyNotFoundException
+        try {
+
+            return towerInventories[towerName];
+
+        } catch (Exception e) {
+
+            Debug.Log("inventory does not exist for provided tower name");
+
+        }
 
     }
 
+    // adds an item of the given id to the tower givenn
     public void AddItemToTower(string towerName, int itemID)
     {
         
+        // if all towers are to gain the item, then loop through all towers and give them the item
         if (towerName.Equals("all"))
         {
 
@@ -80,7 +97,7 @@ public class ItemInventoryManager : MonoBehaviour
 
         }
 
-        // increment the count of items of said ID(just an int that corresponds to the order in which it was added)
+        // increment the count of items of said ID(just an int that corresponds to the item's order in the code)
         towerInventories[towerName][itemID - 1][1]++;
 
     }
