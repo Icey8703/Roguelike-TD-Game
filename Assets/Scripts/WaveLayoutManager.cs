@@ -28,7 +28,7 @@ public class WaveLayoutManager : MonoBehaviour
             refreshCountdown--;
 
             allSpawned = false;
-            if (ShopManager.shopInstance != null && refreshCountdown == 0)
+            if (ShopManager.shopInstance != null && refreshCountdown <= 0)
             {
 
                 ShopManager.shopInstance.RefreshShop();

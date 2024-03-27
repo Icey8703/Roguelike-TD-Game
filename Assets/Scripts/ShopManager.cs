@@ -9,7 +9,7 @@ public class ShopManager : MonoBehaviour
 {
 
     public static ShopManager shopInstance;
-    [SerializeField] private Transform[] shopOptions;
+    public Transform[] shopOptions;
     [SerializeField] private string[] commonItemList;
 
     private void Awake()
@@ -45,16 +45,52 @@ public class ShopManager : MonoBehaviour
         foreach (Transform option in shopOptions)
         {
 
-            if (Random.Range(0f, 100f) <= 73.2f)
+            option.gameObject.SetActive(true);
+            option.GetComponent<ShopOptionManager>().purchased = false;
+            float roll = Random.Range(0f, 100f);
+
+            /*if (roll <= 73.2f)
+            {*/
+
+                Transform optionName = option.Find("Name");
+                TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
+                int randItemIndex = Mathf.FloorToInt(Random.Range(0, commonItemList.Length));
+                optionText.SetText(commonItemList[randItemIndex]);
+                option.GetComponent<ShopOptionManager>().currItemID = randItemIndex + 1;
+            
+            /*
+
+            } else if (roll >= 73.2f && roll <= 99.0f)
             {
 
                 Transform optionName = option.Find("Name");
                 TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
-                optionText.SetText(commonItemList[Mathf.FloorToInt(Random.Range(0, commonItemList.Length))]);
+                optionText.SetText("Rare item name");
+
+            } else if (roll >= 99.0f) {
+
+                Transform optionName = option.Find("Name");
+                TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
+                optionText.SetText("Legendary item name");
+
+            }*/
+
+        }
+
+    }
+
+    public void Update()
+    {
+        
+        if (shopInstance != null && shopInstance.gameObject.activeSelf)
+        {
+
+            foreach (Transform option in shopOptions)
+            {
+
+                option.gameObject.SetActive(!(option.GetComponent<ShopOptionManager>().purchased));
 
             }
-
-            option.gameObject.SetActive(true);
 
         }
 

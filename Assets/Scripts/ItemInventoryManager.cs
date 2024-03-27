@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ public class ItemInventoryManager : MonoBehaviour
 
         instance = this;
         towerNames = new string[]{ "Gatling" };
-        defaultItemCounts = new int[][]{ (new int[] { 1, 0 }) };
+        defaultItemCounts = new int[][]{ (new int[] { 1, 0 }), (new int[] { 2, 0 }), (new int[] { 3, 0 })};
 
     }
 
@@ -56,9 +57,29 @@ public class ItemInventoryManager : MonoBehaviour
 
     }
 
+    public int[][] GetTowerItems(string towerName)
+    {
+
+        return towerInventories[towerName];
+
+    }
+
     public void AddItemToTower(string towerName, int itemID)
     {
         
+        if (towerName.Equals("all"))
+        {
+
+            foreach (string tower in towerNames)
+            {
+
+                towerInventories[tower][itemID - 1][1]++;
+                return;
+
+            }
+
+        }
+
         // increment the count of items of said ID(just an int that corresponds to the order in which it was added)
         towerInventories[towerName][itemID - 1][1]++;
 

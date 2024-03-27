@@ -16,11 +16,13 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private GameObject targetingDropdownMenu;
     [SerializeField] private int targetingModeIndex = 0;
     [SerializeField] private Transform mainBody;
+    [SerializeField] private ItemInventoryManager inventoryManager;
+    [SerializeField] private string towerNameVal = "Gatling";
+    [SerializeField] private int autoSearCount = 0;
     
     [Header("Stats/Attributes")]
 
     public float range = 15.0f;
-    public float turnSpeed = 25f;
     private string[] targetingModes = { "first", "close" };
     public float firerate = 2f;
     public float projectileDamage = 1f;
@@ -32,12 +34,25 @@ public class TowerScript : MonoBehaviour
 
         InvokeRepeating("UpdateTargetedEnemy", 0f, 0.025f);
         targetingDropdownMenu = GameObject.Find("TowerTargetingDropdown");
+        inventoryManager = ItemInventoryManager.instance;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        range = 15.0f * (1 + (inventoryManager.GetTowerItems(towerNameVal)[2][1] * 0.05f));
+        projectileDamage = 1 + (0.5f * inventoryManager.GetTowerItems(towerNameVal)[1][1]);
+        autoSearCount = inventoryManager.GetTowerItems(towerNameVal)[0][1];
+
+        if (firingCountdown <= 0f)
+        {
+
+            Attack();
+            firingCountdown = 1f / (firerate * (1 + (autoSearCount * 0.1f)));
+
+        }
 
         if (targetedEnemy == null)
         {
@@ -48,15 +63,8 @@ public class TowerScript : MonoBehaviour
 
         UpdateTowerRotation();
 
-        if (firingCountdown <= 0f)
-        {
-
-            Attack();
-            firingCountdown = 1f / firerate;
-
-        }
-
         firingCountdown -= Time.deltaTime;
+        
 
     }
 
@@ -166,7 +174,7 @@ public class TowerScript : MonoBehaviour
 
             Vector3 enemyDirection = targetedEnemy.transform.position - transform.position;
             Quaternion turretAim = Quaternion.LookRotation(enemyDirection);
-            Vector3 rotation = Quaternion.Lerp(rotPart.rotation, turretAim, Time.deltaTime * turnSpeed).eulerAngles;
+            Vector3 rotation = turretAim.eulerAngles;
             rotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
             
 
