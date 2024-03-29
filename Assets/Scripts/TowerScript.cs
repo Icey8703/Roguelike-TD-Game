@@ -19,7 +19,6 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private Transform mainBody;
     [SerializeField] private ItemInventoryManager inventoryManager;
     [SerializeField] private string towerNameVal = "Gatling";
-    [SerializeField] private int autoSearCount = 0;
     
     [Header("Stats/Attributes")]
 
@@ -47,14 +46,14 @@ public class TowerScript : MonoBehaviour
         // update the stats in accordance with items the tower has
         range = 15.0f * (1 + (inventoryManager.GetTowerItems(towerNameVal)[2][1] * 0.05f));
         projectileDamage = 1 + (0.5f * inventoryManager.GetTowerItems(towerNameVal)[1][1]);
-        autoSearCount = inventoryManager.GetTowerItems(towerNameVal)[0][1];
+        firerate = 12.5f * (1 + inventoryManager.GetTowerItems(towerNameVal)[0][1]);
 
         
         if (firingCountdown <= 0f)
         {
 
             Attack();
-            firingCountdown = 1f / (firerate * (1 + (autoSearCount * 0.1f)));
+            firingCountdown = 1f / (firerate);
 
         }
 

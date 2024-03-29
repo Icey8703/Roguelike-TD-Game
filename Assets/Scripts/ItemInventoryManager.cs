@@ -66,14 +66,15 @@ public class ItemInventoryManager : MonoBehaviour
     public int[][] GetTowerItems(string towerName)
     {
 
-        // tries to return it, catches a KeyNotFoundException
+        // tries to return it, catches any failure(KeyNotFoundException :steamhappy:)
         try {
 
             return towerInventories[towerName];
 
         } catch (Exception e) {
 
-            Debug.Log("inventory does not exist for provided tower name");
+            Debug.Log("inventory does not exist for provided tower name. Exception: " + e);
+            return null;
 
         }
 
