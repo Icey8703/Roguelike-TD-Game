@@ -10,7 +10,8 @@ public class TowerPlacementManager : MonoBehaviour
 
     // currently selected towerObject and all of the towers that exist in the game
     [SerializeField] private GameObject towerObject;
-    [SerializeField] private GameObject GatlingSentry;
+    public GameObject GatlingSentry;
+    public GameObject otherTower;
 
 
     // before the application starts
@@ -31,11 +32,10 @@ public class TowerPlacementManager : MonoBehaviour
 
     }
 
-    // before the first frame
-    private void Start()
+    public void SetTowerObject(GameObject tower)
     {
-        // sets the towerObject to the GatlingSentry(multiple types **later**)
-        towerObject = GatlingSentry;
+
+        towerObject = tower;
 
     }
 

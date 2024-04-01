@@ -10,6 +10,7 @@ public class PlacementNodeScript : MonoBehaviour
     public Color defaultColor;
     private Vector3 placementOffset;
     [SerializeField] private GameObject tower;
+    TowerPlacementManager placementManager;
 
     // Start is called before the first frame update
     void Start()
@@ -20,14 +21,23 @@ public class PlacementNodeScript : MonoBehaviour
         defaultColor = rend.material.color;
         // Sets up the placement offset
         placementOffset = new Vector3(0f, 1.175f, -5f);
+        // identifies the placement manager instance
+        placementManager = TowerPlacementManager.instance;
 
     }
 
     // when the mouse is clicked on the node
     private void OnMouseDown()
     {
-        
+
         if (ShopManager.shopInstance.gameObject.activeSelf)
+        {
+
+            return;
+
+        }
+
+        if (placementManager.GetTowerForPlacement() == null)
         {
 
             return;
@@ -57,6 +67,20 @@ public class PlacementNodeScript : MonoBehaviour
     private void OnMouseEnter()
     {
 
+        if (ShopManager.shopInstance.gameObject.activeSelf)
+        {
+
+            return;
+
+        }
+
+        if (placementManager.GetTowerForPlacement() == null)
+        {
+
+            return;
+
+        }
+
         // set the material color to the specified color(red as specified in the properties)
         rend.material.color = hoveredColor;
 
@@ -65,7 +89,21 @@ public class PlacementNodeScript : MonoBehaviour
     // whenever the mouse exist the node after hovering over it
     private void OnMouseExit()
     {
-        
+
+        if (ShopManager.shopInstance.gameObject.activeSelf)
+        {
+
+            return;
+
+        }
+
+        if (placementManager.GetTowerForPlacement() == null)
+        {
+
+            return;
+
+        }
+
         // set the material color back to its initial color(navy blue as specified by the material for nodes)
         rend.material.color = defaultColor;
 

@@ -46,7 +46,7 @@ public class TowerScript : MonoBehaviour
         // update the stats in accordance with items the tower has
         range = 15.0f * (1 + (inventoryManager.GetTowerItems(towerNameVal)[2][1] * 0.05f));
         projectileDamage = 1 + (0.5f * inventoryManager.GetTowerItems(towerNameVal)[1][1]);
-        firerate = 12.5f * (1 + inventoryManager.GetTowerItems(towerNameVal)[0][1]);
+        firerate = 12.5f * (1 + (inventoryManager.GetTowerItems(towerNameVal)[0][1] * 0.1f));
 
         
         if (firingCountdown <= 0f)
