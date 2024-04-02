@@ -6,10 +6,12 @@ public class TowerShop : MonoBehaviour
 {
 
     [SerializeField] private TowerPlacementManager towerPlacer;
+    public int price;
 
     private void Start()
     {
 
+        price = 1;
         towerPlacer = TowerPlacementManager.instance;
 
     }
@@ -19,7 +21,8 @@ public class TowerShop : MonoBehaviour
     {
 
         // set the tower object to the gatling sentry for placement
-        towerPlacer.SetTowerObject(towerPlacer.GatlingSentry);
+        towerPlacer.SetTowerObject(towerPlacer.GatlingSentry, price);
+
 
     }
 

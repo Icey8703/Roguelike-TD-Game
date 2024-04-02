@@ -44,6 +44,16 @@ public class PlacementNodeScript : MonoBehaviour
 
         }
 
+        if (placementManager.GetPrice() > EconomyManager.instance.bank)
+        {
+
+            Debug.Log("cannot afford tower");
+            rend.material.color = defaultColor;
+            placementManager.SetTowerObject(null, 0);
+            return;
+
+        }
+
         // if the tower slot is already taken(it isn't null)
         if (tower != null)
         {
@@ -60,6 +70,9 @@ public class PlacementNodeScript : MonoBehaviour
         Instantiate(towerToPlace, transform.position + placementOffset, transform.rotation);
         // Set the tower field so towers can't be stacked
         tower = towerToPlace;
+        EconomyManager.instance.makePurchase(placementManager.GetPrice());
+        rend.material.color = defaultColor;
+        placementManager.SetTowerObject(null, 0);
 
     }
 

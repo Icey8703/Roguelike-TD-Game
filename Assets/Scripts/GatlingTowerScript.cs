@@ -19,6 +19,7 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private Transform mainBody;
     [SerializeField] private ItemInventoryManager inventoryManager;
     [SerializeField] private string towerNameVal = "Gatling";
+    public int price;
     
     [Header("Stats/Attributes")]
 
@@ -32,6 +33,8 @@ public class TowerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        price = 250;
 
         InvokeRepeating("UpdateTargetedEnemy", 0f, 0.025f);
         targetingDropdownMenu = GameObject.Find("TowerTargetingDropdown");

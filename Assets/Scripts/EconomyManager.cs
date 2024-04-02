@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class EconomyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public static EconomyManager instance;
+    public int bank;
+
+    private void Awake()
     {
         
+        if (instance != null)
+        {
+
+            Debug.Log("Economy manager already exists in the scene");
+            return;
+
+        }
+
+        instance = this;
+        bank = 350;
+
+    }
+    
+    public void makePurchase(int cost)
+    {
+
+        bank -= cost;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

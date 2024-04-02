@@ -12,6 +12,7 @@ public class TowerPlacementManager : MonoBehaviour
     [SerializeField] private GameObject towerObject;
     public GameObject GatlingSentry;
     public GameObject otherTower;
+    [SerializeField] private int towerPrice;
 
 
     // before the application starts
@@ -32,10 +33,11 @@ public class TowerPlacementManager : MonoBehaviour
 
     }
 
-    public void SetTowerObject(GameObject tower)
+    public void SetTowerObject(GameObject tower, int price)
     {
 
         towerObject = tower;
+        towerPrice = price;
 
     }
 
@@ -44,6 +46,13 @@ public class TowerPlacementManager : MonoBehaviour
     {
 
         return towerObject;
+
+    }
+
+    public int GetPrice()
+    {
+
+        return towerPrice;
 
     }
 

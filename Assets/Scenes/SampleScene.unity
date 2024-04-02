@@ -4123,6 +4123,7 @@ MonoBehaviour:
   towerObject: {fileID: 0}
   GatlingSentry: {fileID: 2473228221068675640, guid: e59a5e64790d722459cf08468dd64046, type: 3}
   otherTower: {fileID: 0}
+  towerPrice: 0
 --- !u!114 &558930844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4147,6 +4148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a52a9d8e5ef76f48938649784b3723e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bank: 0
 --- !u!1001 &589849093
 PrefabInstance:
   m_ObjectHideFlags: 0
