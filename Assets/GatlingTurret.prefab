@@ -226,8 +226,10 @@ MonoBehaviour:
   targetingDropdownMenu: {fileID: 0}
   targetingModeIndex: 0
   mainBody: {fileID: 1778101091057252340}
+  inventoryManager: {fileID: 0}
+  towerNameVal: Gatling
+  price: 250
   range: 15
-  turnSpeed: 35
   firerate: 12.5
   projectileDamage: 1
 --- !u!1 &4217390541469858090

@@ -19,7 +19,7 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private Transform mainBody;
     [SerializeField] private ItemInventoryManager inventoryManager;
     [SerializeField] private string towerNameVal = "Gatling";
-    public int price;
+    public int price = 250;
     
     [Header("Stats/Attributes")]
 
@@ -140,8 +140,11 @@ public class TowerScript : MonoBehaviour
                 int enemyWaypoint = enemyScript.waypointIndex;
                 float enemyWaypointDistance = Vector3.Distance(enemy.transform.position, Waypoints.waypoints[enemyWaypoint].position);
 
-                if ((enemyWaypoint > firstEnemyWaypoint && Vector3.Distance(mainBody.position, enemy.transform.position) <= range)
-                    || (enemyWaypoint == firstEnemyWaypoint && enemyWaypointDistance <= firstEnemyWaypointDistance && Vector3.Distance(mainBody.position, enemy.transform.position) <= range))
+                if ((enemyWaypoint > firstEnemyWaypoint 
+                    && Vector3.Distance(mainBody.position, enemy.transform.position) <= range)
+                    || (enemyWaypoint == firstEnemyWaypoint 
+                    && enemyWaypointDistance <= firstEnemyWaypointDistance 
+                    && Vector3.Distance(mainBody.position, enemy.transform.position) <= range))
                 {
 
                     first = enemy;

@@ -6,7 +6,8 @@ public class EconomyManager : MonoBehaviour
 {
     
     public static EconomyManager instance;
-    public int bank;
+    public float bank;
+    public BankManager bankText;
 
     private void Awake()
     {
@@ -23,11 +24,27 @@ public class EconomyManager : MonoBehaviour
         bank = 350;
 
     }
-    
-    public void makePurchase(int cost)
+
+    private void Start()
+    {
+
+        bankText = BankManager.instance;
+
+    }
+
+    public void makePurchase(float cost)
     {
 
         bank -= cost;
+        bankText.UpdateText("$" + bank.ToString());
+
+    }
+
+    public void gainMoney(float money)
+    {
+
+        bank += money;
+        bankText.UpdateText("$" + bank.ToString());
 
     }
 

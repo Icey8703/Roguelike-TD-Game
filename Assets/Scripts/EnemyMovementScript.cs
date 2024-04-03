@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -11,22 +13,24 @@ public class EnemyMovementScript : MonoBehaviour
     private Transform target;
     public int waypointIndex = 0;
     public float distanceToNextWaypoint;
+    EconomyManager ecoManager;
 
     void Start()
     {
 
         target = Waypoints.waypoints[0];
+        ecoManager = EconomyManager.instance;
 
     }
 
     void Update()
     {
 
-        Vector3 direction = target.position - transform.position;
+        UnityEngine.Vector3 direction = target.position - transform.position;
         distanceToNextWaypoint = direction.magnitude;
         transform.Translate(direction.normalized * movementSpeed * Time.deltaTime, Space.World);
 
-        if (Vector3.Distance(transform.position, target.position) <= 0.22f)
+        if (UnityEngine.Vector3.Distance(transform.position, target.position) <= 0.22f)
         {
 
             GetNextWaypoint();
@@ -53,6 +57,18 @@ public class EnemyMovementScript : MonoBehaviour
 
     public void TakeDamage(float damageDealt) 
     {
+
+        if (health < damageDealt)
+        {
+
+            ecoManager.gainMoney(health);
+
+        } else
+        {
+
+            ecoManager.gainMoney(damageDealt);
+
+        }
 
         health -= damageDealt;
 

@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TowerShop : MonoBehaviour
 {
 
     [SerializeField] private TowerPlacementManager towerPlacer;
+    [SerializeField] private TextMeshProUGUI tmpGUI;
     public int price;
 
     private void Start()
     {
 
-        price = 1;
         towerPlacer = TowerPlacementManager.instance;
 
     }
@@ -23,6 +25,13 @@ public class TowerShop : MonoBehaviour
         // set the tower object to the gatling sentry for placement
         towerPlacer.SetTowerObject(towerPlacer.GatlingSentry, price);
 
+
+    }
+
+    private void Update()
+    {
+
+        tmpGUI.text = "$" + price;
 
     }
 
