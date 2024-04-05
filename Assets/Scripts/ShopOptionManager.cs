@@ -11,6 +11,7 @@ public class ShopOptionManager : MonoBehaviour
     public bool purchased;
     [SerializeField] private ItemInventoryManager inventoryManager;
     public int currItemID;
+    public float price;
 
     // initialize the purchased state to true so it refreshes at the start
     private void Awake()
