@@ -19,8 +19,6 @@ public class PlacementNodeScript : MonoBehaviour
         rend = GetComponent<Renderer>();
         // Sets the default color to its normal color
         defaultColor = rend.material.color;
-        // Sets up the placement offset
-        placementOffset = new Vector3(0f, 1.175f, -5f);
         // identifies the placement manager instance
         placementManager = TowerPlacementManager.instance;
 
@@ -66,6 +64,19 @@ public class PlacementNodeScript : MonoBehaviour
 
         // if the tower field is null, get the tower for placement from the Director
         GameObject towerToPlace = TowerPlacementManager.instance.GetTowerForPlacement();
+
+        if (towerToPlace == TowerPlacementManager.instance.SniperSentry)
+        {
+
+            placementOffset = new Vector3(0f, 1.75f, 0f);
+
+        } else if (towerToPlace == TowerPlacementManager.instance.GatlingSentry)
+        {
+
+            placementOffset = new Vector3(0f, 1.175f, -5f);
+
+        }
+
         // instantiate the tower on the node with the offset
         Instantiate(towerToPlace, transform.position + placementOffset, transform.rotation);
         // Set the tower field so towers can't be stacked

@@ -28,6 +28,13 @@ public class TowerShop : MonoBehaviour
 
     }
 
+    public void BuySniper()
+    {
+
+        towerPlacer.SetTowerObject(towerPlacer.SniperSentry, price);
+
+    }
+
     private void Update()
     {
 

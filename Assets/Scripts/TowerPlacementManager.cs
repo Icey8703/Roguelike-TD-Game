@@ -11,7 +11,7 @@ public class TowerPlacementManager : MonoBehaviour
     // currently selected towerObject and all of the towers that exist in the game
     [SerializeField] private GameObject towerObject;
     public GameObject GatlingSentry;
-    public GameObject otherTower;
+    public GameObject SniperSentry;
     [SerializeField] private int towerPrice;
 
 
