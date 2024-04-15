@@ -11,7 +11,8 @@ public class ShopManager : MonoBehaviour
     public static ShopManager shopInstance;
     public Transform[] shopOptions;
     [SerializeField] private string[] commonItemList;
-
+    [SerializeField] private string[] rareItemList;
+    [SerializeField] private Dictionary<string, int> itemIDHolder;
     private void Awake()
     {
 
@@ -40,8 +41,11 @@ public class ShopManager : MonoBehaviour
         // deactivate the shop for no obstruction
         shopInstance.gameObject.SetActive(false);
 
-        // initialize the items for commons
+        // initialize the items for each tier
         commonItemList = new string[] { "Auto\nSear", "HP\nRounds", "Tracking\nModule" };
+        rareItemList = new string[] { "Unstable\nMunitions" };
+        // set up the item ID cheat sheet
+        itemIDHolder = new Dictionary<string, int> { {"Auto\nSear", 1}, {"HP\nRounds", 2}, {"Tracking\nModule", 3}, {"Unstable\nMunitions", 4} };
 
     }
 
@@ -63,7 +67,14 @@ public class ShopManager : MonoBehaviour
                 TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, commonItemList.Length));
                 optionText.SetText(commonItemList[randItemIndex]);
-                option.GetComponent<ShopOptionManager>().currItemID = randItemIndex + 1;
+
+                if (!itemIDHolder.TryGetValue(commonItemList[randItemIndex], out option.GetComponent<ShopOptionManager>().currItemID)) 
+                {
+
+                    Debug.Log("No such item exists in itemIDHolder");
+                    return;
+
+                }
             
             /*
 
