@@ -58,6 +58,13 @@ public class EnemyMovementScript : MonoBehaviour
     public void TakeDamage(float damageDealt) 
     {
 
+        if (health <= 0)
+        {
+
+            return;
+
+        }
+
         if (health < damageDealt)
         {
 

@@ -60,8 +60,8 @@ public class ShopManager : MonoBehaviour
             option.GetComponent<ShopOptionManager>().purchased = false;
             float roll = Random.Range(0f, 100f);
 
-            /*if (roll <= 73.2f)
-            {*/
+            if (roll <= 73.2f)
+            {
 
                 Transform optionName = option.Find("Name");
                 TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
@@ -76,16 +76,25 @@ public class ShopManager : MonoBehaviour
 
                 }
             
-            /*
+            
 
             } else if (roll >= 73.2f && roll <= 99.0f)
             {
 
                 Transform optionName = option.Find("Name");
                 TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
-                optionText.SetText("Rare item name");
+                int randItemIndex = Mathf.FloorToInt(Random.Range(0, rareItemList.Length));
+                optionText.SetText(rareItemList[randItemIndex]);
 
-            } else if (roll >= 99.0f) {
+                if (!itemIDHolder.TryGetValue(rareItemList[randItemIndex], out option.GetComponent<ShopOptionManager>().currItemID))
+                {
+
+                    Debug.Log("No such item exists in itemIDHolder");
+                    return;
+
+                }
+
+            }/* else if (roll >= 99.0f) {
 
                 Transform optionName = option.Find("Name");
                 TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();

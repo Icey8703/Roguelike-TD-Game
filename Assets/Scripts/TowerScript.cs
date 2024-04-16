@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -28,10 +29,14 @@ public class TowerScript : MonoBehaviour
     private string[] targetingModes = { "first", "close" };
     public float firerate = 2f;
     public float projectileDamage = 1f;
+    public int luck = 0;
+    public float projectileSpeed = 80f;
     private float firingCountdown = 0f;
     public float baseFireRate;
     public float baseDamage;
     public float baseRange;
+    public int baseLuck = 0;
+    public float baseProjectileSpeed = 80f;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +58,7 @@ public class TowerScript : MonoBehaviour
         range = baseRange * (1 + (inventoryManager.GetTowerItems(towerNameVal)[2][1] * 0.05f));
         projectileDamage = baseDamage + (0.5f * inventoryManager.GetTowerItems(towerNameVal)[1][1]);
         firerate = baseFireRate * (1 + (inventoryManager.GetTowerItems(towerNameVal)[0][1] * 0.1f));
+        luck = baseLuck/* add luck here or something later idk */;
 
         
         if (firingCountdown <= 0f)
@@ -201,12 +207,26 @@ public class TowerScript : MonoBehaviour
 
         GameObject projectileGameObject = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
         BulletBehavior projectile = projectileGameObject.GetComponent<BulletBehavior>();
-        
+        bool unstableProc = false;
+
         if (projectile != null)
         {
 
+            if (inventoryManager.GetTowerItems(towerNameVal)[3][1] > 0)
+            {
+
+                if (UnityEngine.Random.Range(0f, 100f) <= 10f)
+                {
+
+                    unstableProc = true;
+                    Debug.Log("Unstable has proc'd");
+
+                }
+
+            }
+
             // Implement items **later** but this should be a decent way to implement them
-            projectile.SeekTarget(targetedEnemy, projectileDamage/* + (2 * damageItemCount)*/, 80);
+            projectile.SeekTarget(targetedEnemy, projectileDamage * ((unstableProc ? 1 : 0) + inventoryManager.GetTowerItems(towerNameVal)[3][1] + 1), projectileSpeed);
 
         }
 
