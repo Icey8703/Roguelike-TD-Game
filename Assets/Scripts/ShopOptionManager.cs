@@ -32,13 +32,21 @@ public class ShopOptionManager : MonoBehaviour
 
     }
 
-
     // when clicked add the item to the tower and deactivate the option, purchased state is now true
     void onClicked()
     {
         
+        if (price > EconomyManager.instance.bank)
+        {
+
+            Debug.Log("Cannot afford item");
+            return;
+
+        }
+
         inventoryManager.AddItemToTower("all", currItemID);
 
+        EconomyManager.instance.makePurchase(price);
         purchased = true;
         transform.gameObject.SetActive(false);
 

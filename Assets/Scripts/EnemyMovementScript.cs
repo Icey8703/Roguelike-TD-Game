@@ -68,12 +68,12 @@ public class EnemyMovementScript : MonoBehaviour
         if (health < damageDealt)
         {
 
-            ecoManager.gainMoney(health);
+            ecoManager.gainMoney(Mathf.Ceil(health / 2));
 
         } else
         {
 
-            ecoManager.gainMoney(damageDealt);
+            ecoManager.gainMoney(Mathf.Ceil(damageDealt / 2));
 
         }
 

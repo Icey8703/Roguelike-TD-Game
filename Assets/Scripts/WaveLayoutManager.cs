@@ -13,11 +13,28 @@ public class WaveLayoutManager : MonoBehaviour
 
     public TextMeshProUGUI WaveCountdownTimer;
 
+    public static WaveLayoutManager instance;
+
     public float waveTimeGapScale = 15f;
     private float generalCountdown = 2f;
-    [SerializeField] private int waveNum = 1;
+    public int waveNum = 1;
     [SerializeField] private int refreshCountdown = 1;
     private bool allSpawned = false;
+
+    private void Start()
+    {
+        
+        if (instance != null)
+        {
+
+            Debug.Log("Wave layout manager already exists in the scene");
+            return;
+
+        }
+
+        instance = this;
+
+    }
 
     void Update()
     {

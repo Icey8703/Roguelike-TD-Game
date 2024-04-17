@@ -54,37 +54,40 @@ public class ShopManager : MonoBehaviour
 
         foreach (Transform option in shopOptions)
         {
+            ShopOptionManager optionScript = option.GetComponent<ShopOptionManager>();
 
             // set the options to active, changes their purchased field to false, and rolls a 1 to 100 chance for item choice
             option.gameObject.SetActive(true);
-            option.GetComponent<ShopOptionManager>().purchased = false;
+            optionScript.purchased = false;
             float roll = Random.Range(0f, 100f);
 
             if (roll <= 73.2f)
             {
 
                 Transform optionName = option.Find("Name");
-                TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI optionNameText = optionName.GetComponent<TextMeshProUGUI>();
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, commonItemList.Length));
-                optionText.SetText(commonItemList[randItemIndex]);
+                optionNameText.SetText(commonItemList[randItemIndex]);
 
-                if (!itemIDHolder.TryGetValue(commonItemList[randItemIndex], out option.GetComponent<ShopOptionManager>().currItemID)) 
+                if (!itemIDHolder.TryGetValue(commonItemList[randItemIndex], out optionScript.currItemID)) 
                 {
 
                     Debug.Log("No such item exists in itemIDHolder");
                     return;
 
                 }
-            
+
+                optionScript.price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.15f) * 50);
+                option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
             
 
-            } else if (roll >= 73.2f && roll <= 99.0f)
+            } else // if (roll >= 73.2f && roll <= 99.0f)
             {
 
                 Transform optionName = option.Find("Name");
-                TextMeshProUGUI optionText = optionName.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI optionNameText = optionName.GetComponent<TextMeshProUGUI>();
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, rareItemList.Length));
-                optionText.SetText(rareItemList[randItemIndex]);
+                optionNameText.SetText(rareItemList[randItemIndex]);
 
                 if (!itemIDHolder.TryGetValue(rareItemList[randItemIndex], out option.GetComponent<ShopOptionManager>().currItemID))
                 {
@@ -93,6 +96,9 @@ public class ShopManager : MonoBehaviour
                     return;
 
                 }
+
+                option.GetComponent<ShopOptionManager>().price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.15f) * 75);
+                option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
 
             }/* else if (roll >= 99.0f) {
 
