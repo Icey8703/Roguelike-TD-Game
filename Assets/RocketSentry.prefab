@@ -204,6 +204,37 @@ Transform:
   - {fileID: 7626303831338271006}
   m_Father: {fileID: 4876780094198832478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1429578443415363234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7858966961547389690}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7858966961547389690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429578443415363234}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.01189, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4706818578714538359}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3221293717381801292
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8686860550438153925}
+  - component: {fileID: -5375848882057739527}
   m_Layer: 0
   m_Name: RocketSentry
   m_TagString: Untagged
@@ -578,6 +610,38 @@ Transform:
   - {fileID: 4876780094198832478}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5375848882057739527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4734256251814428510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017aaa7bd642fd74b87188e9a52c23fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetedEnemy: {fileID: 0}
+  firePoint: {fileID: 7858966961547389690}
+  bullet: {fileID: 0}
+  rotPart: {fileID: 6090013959230496614}
+  targetingDropdownMenu: {fileID: 0}
+  targetingModeIndex: 0
+  mainBody: {fileID: 8686860550438153925}
+  inventoryManager: {fileID: 0}
+  towerNameVal: Rocket
+  price: 650
+  range: 25
+  firerate: 3
+  projectileDamage: 3.5
+  luck: 0
+  projectileSpeed: 140
+  baseFireRate: 3
+  baseDamage: 3.5
+  baseRange: 25
+  baseLuck: 0
+  baseProjectileSpeed: 140
 --- !u!1 &5080021081763174067
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +847,7 @@ Transform:
   - {fileID: 6534227488950213184}
   - {fileID: 1916509372485411858}
   - {fileID: 4240917703745020111}
+  - {fileID: 7858966961547389690}
   m_Father: {fileID: 7626303831338271006}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5231256738154382872

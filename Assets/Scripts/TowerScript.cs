@@ -31,12 +31,14 @@ public class TowerScript : MonoBehaviour
     public float projectileDamage = 1f;
     public int luck = 0;
     public float projectileSpeed = 80f;
+    public float splashRadius = 0f;
     private float firingCountdown = 0f;
     public float baseFireRate;
     public float baseDamage;
     public float baseRange;
     public int baseLuck = 0;
     public float baseProjectileSpeed = 80f;
+    public float baseSplashRadius = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -226,7 +228,7 @@ public class TowerScript : MonoBehaviour
             }
 
             // Implement items **later** but this should be a decent way to implement them
-            projectile.SeekTarget(targetedEnemy, projectileDamage * ((unstableProc ? 1 : 0) + inventoryManager.GetTowerItems(towerNameVal)[3][1] + 1), projectileSpeed);
+            projectile.SeekTarget(targetedEnemy, projectileDamage * ((unstableProc ? 1 : 0) + inventoryManager.GetTowerItems(towerNameVal)[3][1] + 1), projectileSpeed, splashRadius);
 
         }
 
