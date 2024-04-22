@@ -12,6 +12,7 @@ public class TowerPlacementManager : MonoBehaviour
     [SerializeField] private GameObject towerObject;
     public GameObject GatlingSentry;
     public GameObject SniperSentry;
+    public GameObject RocketSentry;
     [SerializeField] private int towerPrice;
 
 

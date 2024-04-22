@@ -35,6 +35,13 @@ public class TowerShop : MonoBehaviour
 
     }
 
+    public void BuyRocket()
+    {
+
+        towerPlacer.SetTowerObject(towerPlacer.RocketSentry, price);
+
+    }
+
     private void Update()
     {
 

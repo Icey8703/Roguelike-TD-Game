@@ -8,6 +8,7 @@ public class BulletBehavior : MonoBehaviour
     private float projectileSpeed = 80f;
     private float damage = 1f;
     private float splashRadius = 0f;
+    public GameObject impactEffect;
 
     public void SeekTarget(Transform _targetEnemy) 
     {
@@ -54,6 +55,13 @@ public class BulletBehavior : MonoBehaviour
 
     void Impact()
     {
+
+        if (impactEffect != null)
+        {
+
+            GameObject tempObj = (GameObject)Instantiate(impactEffect, targetEnemy.transform.position, targetEnemy.transform.rotation);
+
+        }
 
         EnemyMovementScript enemyBehavior = targetEnemy.GetComponent<EnemyMovementScript>();
         enemyBehavior.TakeDamage(damage);

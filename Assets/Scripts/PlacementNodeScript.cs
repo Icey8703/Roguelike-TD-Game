@@ -75,6 +75,11 @@ public class PlacementNodeScript : MonoBehaviour
 
             placementOffset = new Vector3(0f, 1.175f, -5f);
 
+        } else if (towerToPlace == TowerPlacementManager.instance.RocketSentry)
+        {
+
+            placementOffset = new Vector3(0f, 2.5f, 0f);
+
         }
 
         // instantiate the tower on the node with the offset

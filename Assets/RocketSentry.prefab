@@ -196,14 +196,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416482129849007558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0.49999982, y: 0.5000002, z: 0.50000024, w: 0.49999973}
   m_LocalPosition: {x: 0, y: 0, z: -0.02}
   m_LocalScale: {x: 0.01, y: 0.010000002, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7626303831338271006}
   m_Father: {fileID: 4876780094198832478}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
 --- !u!1 &1429578443415363234
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,9 +261,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3221293717381801292}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.50000006, y: -0.49999997, z: -0.50000006, w: 0.49999994}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 99.999985, y: 100, z: 99.999985}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4706818578714538359}
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetedEnemy: {fileID: 0}
   firePoint: {fileID: 7858966961547389690}
-  bullet: {fileID: 0}
+  bullet: {fileID: 4220900206363880268, guid: 0a09d70183c894b4eb78fa4d66a352f2, type: 3}
   rotPart: {fileID: 6090013959230496614}
   targetingDropdownMenu: {fileID: 0}
   targetingModeIndex: 0
@@ -637,11 +637,13 @@ MonoBehaviour:
   projectileDamage: 3.5
   luck: 0
   projectileSpeed: 140
+  splashRadius: 5
   baseFireRate: 3
   baseDamage: 3.5
   baseRange: 25
   baseLuck: 0
   baseProjectileSpeed: 140
+  baseSplashRadius: 5
 --- !u!1 &5080021081763174067
 GameObject:
   m_ObjectHideFlags: 0
