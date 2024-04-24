@@ -61,20 +61,20 @@ public class TowerScript : MonoBehaviour
         projectileDamage = baseDamage + (0.5f * inventoryManager.GetTowerItems(towerNameVal)[1][1]);
         firerate = baseFireRate * (1 + (inventoryManager.GetTowerItems(towerNameVal)[0][1] * 0.1f));
         luck = baseLuck/* add luck here or something later idk */;
-
-        
-        if (firingCountdown <= 0f)
-        {
-
-            Attack();
-            firingCountdown = 1f / (firerate);
-
-        }
+        splashRadius = baseSplashRadius;
 
         if (targetedEnemy == null)
         {
 
             return;
+
+        }
+
+        if (firingCountdown <= 0f)
+        {
+
+            firingCountdown = 1f / (firerate);
+            Attack();
 
         }
 
@@ -206,6 +206,13 @@ public class TowerScript : MonoBehaviour
 
     void Attack()
     {
+
+        if (targetedEnemy == null)
+        {
+
+            return;
+
+        }
 
         GameObject projectileGameObject = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
         BulletBehavior projectile = projectileGameObject.GetComponent<BulletBehavior>();

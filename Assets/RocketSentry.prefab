@@ -636,14 +636,14 @@ MonoBehaviour:
   firerate: 3
   projectileDamage: 3.5
   luck: 0
-  projectileSpeed: 140
-  splashRadius: 5
+  projectileSpeed: 55
+  splashRadius: 12.5
   baseFireRate: 3
   baseDamage: 3.5
   baseRange: 25
   baseLuck: 0
-  baseProjectileSpeed: 140
-  baseSplashRadius: 5
+  baseProjectileSpeed: 55
+  baseSplashRadius: 12.5
 --- !u!1 &5080021081763174067
 GameObject:
   m_ObjectHideFlags: 0

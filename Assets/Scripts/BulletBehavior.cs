@@ -5,17 +5,11 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     private Transform targetEnemy;
-    private float projectileSpeed = 80f;
-    private float damage = 1f;
-    private float splashRadius = 0f;
+    private float projectileSpeed;
+    private float damage;
+    private float splashRadius;
     public GameObject impactEffect;
-
-    public void SeekTarget(Transform _targetEnemy) 
-    {
-
-        targetEnemy = _targetEnemy;
-
-    }
+    public ParticleSystem moveEffect;
 
     public void SeekTarget(Transform _targetEnemy, float _damage, float _projectileSpeed, float _splashRadius)
     {
@@ -24,6 +18,8 @@ public class BulletBehavior : MonoBehaviour
         damage = _damage;
         projectileSpeed = _projectileSpeed;
         splashRadius = _splashRadius;
+
+        TryGetComponent<ParticleSystem>(out moveEffect);
 
     }
 
@@ -34,6 +30,15 @@ public class BulletBehavior : MonoBehaviour
         {
 
             Destroy(gameObject); return;
+
+        }
+
+        if (moveEffect != null && !moveEffect.isPlaying)
+        {
+
+            moveEffect.Play();
+            var main = moveEffect.main;
+            main.simulationSpeed = 10f;
 
         }
 
@@ -64,7 +69,7 @@ public class BulletBehavior : MonoBehaviour
         }
 
         EnemyMovementScript enemyBehavior = targetEnemy.GetComponent<EnemyMovementScript>();
-        enemyBehavior.TakeDamage(damage);
+
         if (splashRadius > 0f)
         {
 
@@ -80,7 +85,14 @@ public class BulletBehavior : MonoBehaviour
 
             }
 
+        } else
+        {
+
+            enemyBehavior.TakeDamage(damage);
+
         }
+
+        
         // possible pierce implementation using a conditional and a field. **make sure it doesn't lock onto the same enemy(s) that it has already hit**
         Destroy(gameObject);
 
