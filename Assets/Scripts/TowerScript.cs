@@ -20,6 +20,7 @@ public class TowerScript : MonoBehaviour
     [SerializeField] private Transform mainBody;
     [SerializeField] private ItemInventoryManager inventoryManager;
     [SerializeField] private string towerNameVal = "Gatling";
+    [SerializeField] private ParticleSystem MuzzleFlashEffect;
     public int price = 250;
     
     [Header("Stats/Attributes")]
@@ -63,6 +64,7 @@ public class TowerScript : MonoBehaviour
         luck = baseLuck/* add luck here or something later idk */;
         splashRadius = baseSplashRadius;
 
+        // return if there is no targeted enemy for performance purposes
         if (targetedEnemy == null)
         {
 
@@ -70,6 +72,7 @@ public class TowerScript : MonoBehaviour
 
         }
 
+        // fire if the cooldown is over
         if (firingCountdown <= 0f)
         {
 
@@ -78,6 +81,7 @@ public class TowerScript : MonoBehaviour
 
         }
 
+        // rotate the tower to aim at the enemy it's targeting and decrement the cooldown by the time from the last frame to this frame
         UpdateTowerRotation();
 
         firingCountdown -= Time.deltaTime;
@@ -85,6 +89,7 @@ public class TowerScript : MonoBehaviour
 
     }
 
+    // when selected in the workspace, the tower will create a wire sphere to display its range(for debugging)
     void OnDrawGizmosSelected()
     {
 
@@ -93,6 +98,7 @@ public class TowerScript : MonoBehaviour
 
     }
 
+    // updates the targeted enemy based on the selected targeting mode
     void UpdateTargetedEnemy()
     {
         
@@ -103,6 +109,7 @@ public class TowerScript : MonoBehaviour
         TMPro.TMP_Dropdown targetingModeDropdown = targetingDropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
         targetingModeIndex = targetingModeDropdown.value;
 
+        // if the targeting mode is set to close, calculate the closest enemy in range (this will take too long to comment i just cannot right now)
         if (targetingModes[targetingModeIndex].Equals("close"))
         {
 
@@ -135,7 +142,7 @@ public class TowerScript : MonoBehaviour
 
             }
 
-        }
+        } // if it's set to first, calculate which enemy is the first while within range (this will take too long to comment i just cannot right now)
         else if (targetingModes[targetingModeIndex].Equals("first"))
         {
             float firstEnemyWaypoint = -1;
@@ -186,9 +193,14 @@ public class TowerScript : MonoBehaviour
 
     }
 
+    // updates the rotation of the tower towards the targeted enemy
     void UpdateTowerRotation()
     {
 
+        // if it is targeting an enemy calculate the direction from the tower to the enemy
+        // then create a look rotation using said direction
+        // set the look rotation to its euler angles and assign it to a vector3
+        // rotate the rotation part, which is assigned in the workspace and controls specific parts of the prefab model
         if (targetedEnemy != null)
         {
 
@@ -197,16 +209,15 @@ public class TowerScript : MonoBehaviour
             Vector3 rotation = turretAim.eulerAngles;
             rotPart.rotation = Quaternion.Euler(0f, rotation.y, 0f);
             
-
-
-
         }
 
     }
 
+    // fires a projecting at an enemy
     void Attack()
     {
 
+        // cancel the attack if there is no enemy in range(avoids NullReferenceExceptions)
         if (targetedEnemy == null)
         {
 
@@ -214,19 +225,24 @@ public class TowerScript : MonoBehaviour
 
         }
 
+        // instantiates the projectile, gets its BulletBehavior script, initializes a boolean for unstable munitions' proc status
         GameObject projectileGameObject = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
         BulletBehavior projectile = projectileGameObject.GetComponent<BulletBehavior>();
         bool unstableProc = false;
 
+        // if the projectile script exists
         if (projectile != null)
         {
 
+            // if the player owns a copy of unstable munitions
             if (inventoryManager.GetTowerItems(towerNameVal)[3][1] > 0)
             {
-
+                
+                // get a random float between 0.0 and 100.0, and if it's <= 10.0, successfully procs unstable(10% chance, might reduce)
                 if (UnityEngine.Random.Range(0f, 100f) <= 10f)
                 {
-
+                    
+                    // proc unstable's boolean, and log the proc to the console for debug purposes
                     unstableProc = true;
                     Debug.Log("Unstable has proc'd");
 
@@ -234,9 +250,18 @@ public class TowerScript : MonoBehaviour
 
             }
 
-            // Implement items **later** but this should be a decent way to implement them
+            // have the projectile fire towards the targeted enemy and assign its damage
+            // its damage is affected by the number of HP rounds the player has
+            // as well whether unstable munitions has proc'd, also changes by the number the player has
             projectile.SeekTarget(targetedEnemy, projectileDamage * ((unstableProc ? 1 : 0) + inventoryManager.GetTowerItems(towerNameVal)[3][1] + 1), projectileSpeed, splashRadius);
+            
 
+            // creates a muzzle flash effect instance at the firing point
+            if (MuzzleFlashEffect != null) {
+
+                GameObject tempObj = (GameObject)Instantiate(MuzzleFlashEffect, firePoint.transform.position);
+
+            }
         }
 
     }
