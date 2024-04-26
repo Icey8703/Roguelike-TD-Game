@@ -259,7 +259,7 @@ public class TowerScript : MonoBehaviour
             // creates a muzzle flash effect instance at the firing point
             if (MuzzleFlashEffect != null) {
 
-                GameObject tempObj = (GameObject)Instantiate(MuzzleFlashEffect, firePoint.transform.position);
+                ParticleSystem tempObj = (ParticleSystem)Instantiate(MuzzleFlashEffect, firePoint);
 
             }
         }

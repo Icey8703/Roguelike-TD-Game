@@ -122,3 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 708a3e33f383ecf4b9d4b9981d41bd9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactEffect: {fileID: 0}
+  moveEffect: {fileID: 0}

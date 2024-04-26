@@ -228,13 +228,20 @@ MonoBehaviour:
   mainBody: {fileID: 1778101091057252340}
   inventoryManager: {fileID: 0}
   towerNameVal: Gatling
+  MuzzleFlashEffect: {fileID: 3954411171669079343, guid: d7b6408f1c1396f4481324c95d136e4d, type: 3}
   price: 250
   range: 15
   firerate: 12.5
   projectileDamage: 1
+  luck: 0
+  projectileSpeed: 80
+  splashRadius: 0
   baseFireRate: 12.5
   baseDamage: 1
   baseRange: 15
+  baseLuck: 0
+  baseProjectileSpeed: 80
+  baseSplashRadius: 0
 --- !u!1 &4217390541469858090
 GameObject:
   m_ObjectHideFlags: 0

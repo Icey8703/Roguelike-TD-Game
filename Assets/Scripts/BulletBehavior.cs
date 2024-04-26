@@ -50,9 +50,6 @@ public class BulletBehavior : MonoBehaviour
         // figure out the direction from the enemy to the projectile and calculate the distance per frame
         Vector3 direction = targetEnemy.position - transform.position;
         float distanceOnFrame = projectileSpeed * Time.deltaTime;
-        /* Quaternion quaternRot = Quaternion.lookRotation(direction);
-        Vector3 rotation = quaternRot.eulerAngles;
-        transform.rotation = Quaternion.Euler(transform.rotation.x, rotation.y, transform.rotation.z); */
 
         // impact the enemy if the magnitude of the direction is below the distance per frame
         if (direction.magnitude <= distanceOnFrame)

@@ -12,6 +12,14 @@ public class ImpactEffectBehavior : MonoBehaviour
     public void Update()
     {
         
+        // make it play if it's somehow not
+        if (!GetComponent<ParticleSystem>().isPlaying)
+        {
+
+            GetComponent<ParticleSystem>().Play();
+
+        }
+
         // If the timer is up, destroy the impact effect particle system
         if (destroyTimer <= 0f)
         {

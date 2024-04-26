@@ -429,17 +429,20 @@ MonoBehaviour:
   mainBody: {fileID: 3378984824562180413}
   inventoryManager: {fileID: 0}
   towerNameVal: Sniper
+  MuzzleFlashEffect: {fileID: 4954883403799728992, guid: ef81e8a407421814da2d1a35fe26bbf7, type: 3}
   price: 450
   range: 45
   firerate: 0.5
   projectileDamage: 10
   luck: 0
   projectileSpeed: 200
+  splashRadius: 0
   baseFireRate: 0.5
   baseDamage: 10
   baseRange: 45
   baseLuck: 0
   baseProjectileSpeed: 200
+  baseSplashRadius: 0
 --- !u!1 &8085034324568196922
 GameObject:
   m_ObjectHideFlags: 0
