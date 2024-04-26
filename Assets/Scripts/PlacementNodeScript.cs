@@ -28,21 +28,13 @@ public class PlacementNodeScript : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (ShopManager.shopInstance.gameObject.activeSelf)
+        // conditional statements to prevent issues with the shop, and being unable to afford the tower
+        if (ShopManager.shopInstance.gameObject.activeSelf || placementManager.GetTowerForPlacement() == null)
         {
 
             return;
 
-        }
-
-        if (placementManager.GetTowerForPlacement() == null)
-        {
-
-            return;
-
-        }
-
-        if (placementManager.GetPrice() > EconomyManager.instance.bank)
+        } else if (placementManager.GetPrice() > EconomyManager.instance.bank)
         {
 
             Debug.Log("cannot afford tower");
@@ -65,6 +57,7 @@ public class PlacementNodeScript : MonoBehaviour
         // if the tower field is null, get the tower for placement from the Director
         GameObject towerToPlace = TowerPlacementManager.instance.GetTowerForPlacement();
 
+        // set the placement offset based on the tower(my modeling is wacky)
         if (towerToPlace == TowerPlacementManager.instance.SniperSentry)
         {
 
@@ -96,14 +89,8 @@ public class PlacementNodeScript : MonoBehaviour
     private void OnMouseEnter()
     {
 
-        if (ShopManager.shopInstance.gameObject.activeSelf)
-        {
-
-            return;
-
-        }
-
-        if (placementManager.GetTowerForPlacement() == null)
+        // conditional statements to prevent issues with the shop 
+        if (ShopManager.shopInstance.gameObject.activeSelf || placementManager.GetTowerForPlacement() == null)
         {
 
             return;

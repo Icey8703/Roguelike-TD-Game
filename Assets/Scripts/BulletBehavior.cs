@@ -52,7 +52,7 @@ public class BulletBehavior : MonoBehaviour
         float distanceOnFrame = projectileSpeed * Time.deltaTime;
         /* Quaternion quaternRot = Quaternion.lookRotation(direction);
         Vector3 rotation = quaternRot.eulerAngles;
-        transform.rotation = */
+        transform.rotation = Quaternion.Euler(transform.rotation.x, rotation.y, transform.rotation.z); */
 
         // impact the enemy if the magnitude of the direction is below the distance per frame
         if (direction.magnitude <= distanceOnFrame)
@@ -63,14 +63,16 @@ public class BulletBehavior : MonoBehaviour
 
         }
 
-        
+        // move the bullet along the direction's normal, magnitude of said normal being set to the distance on frame
         transform.Translate(direction.normalized * distanceOnFrame, Space.World);
 
     }
 
+    // runs when the projectile hits an enemy
     void Impact()
     {
 
+        // if the impact effect exists, instantiate it at the enemy's position(no parent)
         if (impactEffect != null)
         {
 
@@ -78,8 +80,10 @@ public class BulletBehavior : MonoBehaviour
 
         }
 
+        // get the behavior script for the enemy
         EnemyMovementScript enemyBehavior = targetEnemy.GetComponent<EnemyMovementScript>();
 
+        // if the tower deals splash damage, deal damage to everything in the damage radius
         if (splashRadius > 0f)
         {
 
@@ -95,7 +99,7 @@ public class BulletBehavior : MonoBehaviour
 
             }
 
-        } else
+        } else // otherwise only damage the targeted enemy
         {
 
             enemyBehavior.TakeDamage(damage);

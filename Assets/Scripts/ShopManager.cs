@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
 
+    // fields
     public static ShopManager shopInstance;
     public Transform[] shopOptions;
     [SerializeField] private string[] commonItemList;
@@ -61,6 +62,7 @@ public class ShopManager : MonoBehaviour
             optionScript.purchased = false;
             float roll = Random.Range(0f, 100f);
 
+            // if rolling a 73.2% chance, common item, otherwise it's a rare item
             if (roll <= 73.2f)
             {
 
@@ -69,6 +71,7 @@ public class ShopManager : MonoBehaviour
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, commonItemList.Length));
                 optionNameText.SetText(commonItemList[randItemIndex]);
 
+                // try to get the value of commonitemlist at the index randItemIndex
                 if (!itemIDHolder.TryGetValue(commonItemList[randItemIndex], out optionScript.currItemID)) 
                 {
 
@@ -77,6 +80,7 @@ public class ShopManager : MonoBehaviour
 
                 }
 
+                // set the price using an exponential scaling formula(50 base)
                 optionScript.price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.15f) * 50);
                 option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
             
@@ -89,6 +93,7 @@ public class ShopManager : MonoBehaviour
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, rareItemList.Length));
                 optionNameText.SetText(rareItemList[randItemIndex]);
 
+                // try to get the value of rareitemlist at the index randItemIndex
                 if (!itemIDHolder.TryGetValue(rareItemList[randItemIndex], out option.GetComponent<ShopOptionManager>().currItemID))
                 {
 
@@ -97,6 +102,7 @@ public class ShopManager : MonoBehaviour
 
                 }
 
+                // set the price using an exponential scaling formula(75 base)
                 option.GetComponent<ShopOptionManager>().price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.15f) * 75);
                 option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
 
@@ -112,6 +118,7 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    // Update is called once per frame
     public void Update()
     {
         
