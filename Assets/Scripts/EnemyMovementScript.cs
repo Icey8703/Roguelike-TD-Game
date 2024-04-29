@@ -51,6 +51,7 @@ public class EnemyMovementScript : MonoBehaviour
         if (waypointIndex >= Waypoints.waypoints.Length - 1)
         {
 
+            LifeScript.instance.takeAwayLife(health);
             Destroy(gameObject);
             return;
 
