@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// This script manages the actual amount of money you have by adding/subtracting, setting the start value, and updating the visual value 
 public class EconomyManager : MonoBehaviour
 {
     

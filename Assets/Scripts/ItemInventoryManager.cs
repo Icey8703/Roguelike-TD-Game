@@ -6,6 +6,8 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
+// manages and works with the inventories for towers
+// 
 public class ItemInventoryManager : MonoBehaviour
 {
 

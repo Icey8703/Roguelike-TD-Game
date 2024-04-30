@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+// Manages how an enemy behaves based on external forces and such im overcomplicating it idk
+// Tells it how to move, its health, when it should die(lowtiergod), and has fields necessary for the first targeting :clueless:
 public class EnemyMovementScript : MonoBehaviour
 {
 

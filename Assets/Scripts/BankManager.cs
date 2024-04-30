@@ -4,6 +4,8 @@ using TMPro;
 using TMPro.Examples;
 using UnityEngine;
 
+// Manages the visual display of money a player has
+
 public class BankManager : MonoBehaviour
 {
     

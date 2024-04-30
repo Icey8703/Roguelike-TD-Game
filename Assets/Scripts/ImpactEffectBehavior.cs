@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// manages the effects that occur upon bullet impact
+// for example it destroys the explosion effect after x amount of time
 public class ImpactEffectBehavior : MonoBehaviour
 {
 

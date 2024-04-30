@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// BulletBehavior manages the properties and behavior(no way really???) of a projectile
+// it will deal damage to enemies according to its damage/splash radius, and actually moves the projectile
 public class BulletBehavior : MonoBehaviour
 {
     private Transform targetEnemy;
@@ -65,7 +67,7 @@ public class BulletBehavior : MonoBehaviour
 
     }
 
-    // runs when the projectile hits an enemy
+    // runs when the projectile hits an enemy, no parameters, no return value
     void Impact()
     {
 
@@ -103,8 +105,6 @@ public class BulletBehavior : MonoBehaviour
 
         }
 
-        
-        // possible pierce implementation using a conditional and a field. **make sure it doesn't lock onto the same enemy(s) that it has already hit**
         Destroy(gameObject);
 
     }
