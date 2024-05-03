@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Manages the placement of towers, sending a prefab object to the node requesting it
+// The price is sent as well, however is provided by the tower shop button itself
 public class TowerPlacementManager : MonoBehaviour
 {
 

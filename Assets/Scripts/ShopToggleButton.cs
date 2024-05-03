@@ -4,6 +4,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Manages the shop's active state by detecting when the button to toggle it is pressed
+// if the shop panel is active after being toggled it sets all of the options to active,
+// then if the option is already purchased, it will set it inactive again
 public class ShopToggleButton : MonoBehaviour
 {
 

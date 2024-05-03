@@ -5,6 +5,8 @@ using TMPro.Examples;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Manages the shop's options and item distribution
+// Refreshes every 5 waves, price scaling based on the wave number
 public class ShopManager : MonoBehaviour
 {
 

@@ -7,7 +7,8 @@ using UnityEditor;
 using UnityEngine;
 
 // manages and works with the inventories for towers
-// 
+// When an item is purchased it will update accordingly
+// when a tower needs to update its stats, it will provide the necessary information
 public class ItemInventoryManager : MonoBehaviour
 {
 

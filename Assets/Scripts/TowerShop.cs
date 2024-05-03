@@ -4,6 +4,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// Manages the specific option in the tower shop
+// The buy methods are what tower the button corresponds to, and can be adjusted in the workspace
 public class TowerShop : MonoBehaviour
 {
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Manages the values of a shop option and manages the button corresponding with it
 public class ShopOptionManager : MonoBehaviour
 {
 

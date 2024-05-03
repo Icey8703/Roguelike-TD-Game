@@ -5,8 +5,13 @@ using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
+// Manages the waves, which will be edited later to have actual structure
+// The enemies have exponentially scaling group sizes, based on wave number(not balanced but its still too easy)
+// Tells the shop to reset every 5 waves
 public class WaveLayoutManager : MonoBehaviour
 {
+
+    public static int enemiesPresent = 0;
 
     public Transform enemyPrefab;
     public Transform spawnPointPart;
@@ -91,6 +96,7 @@ public class WaveLayoutManager : MonoBehaviour
     {
 
         Instantiate(enemyPrefab, spawnPointPart.position, spawnPointPart.rotation);
+        enemiesPresent++;
 
     }
 

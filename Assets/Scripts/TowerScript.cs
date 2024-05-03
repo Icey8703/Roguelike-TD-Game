@@ -7,6 +7,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+// Manages every aspect of the tower it is assigned to
+// Each tower type has adjusted values, however a base set of values is provided here
+// Alters the tower's rotation, target, stats(based on items), and dictates its attacks
 public class TowerScript : MonoBehaviour
 {
 

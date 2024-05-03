@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contains an array that holds all the waypoints
+// very simple class used exclusively for enemy movement paths
 public class Waypoints : MonoBehaviour
 {
 

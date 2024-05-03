@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Manages the placement nodes in the scene
+// Each node has one of these scripts
+// This stores the placement offset of the tower(dependent on the tower), the tower itself
+// and reacts based on the mouse's interaction with the node
 public class PlacementNodeScript : MonoBehaviour
 {
     // Fields
