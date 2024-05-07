@@ -13,10 +13,13 @@ public class WaveLayoutManager : MonoBehaviour
 
     public static int enemiesPresent = 0;
 
-    public Transform enemyPrefab;
+    public Transform normalEnemy;
+    public Transform fastEnemy;
+    public Transform tankyEnemy;
     public Transform spawnPointPart;
 
     public TextMeshProUGUI WaveCountdownTimer;
+    [SerializeField] private Wave[] waves;
 
     public static WaveLayoutManager instance;
 
@@ -36,6 +39,8 @@ public class WaveLayoutManager : MonoBehaviour
             return;
 
         }
+
+        waves = new Wave[] { new Wave(normalEnemy.gameObject, 6, 0.3f), new Wave(normalEnemy.gameObject, 10, 0.2f), new Wave(fastEnemy.gameObject, 8, 0.35f), new Wave(fastEnemy.gameObject, 12, 0.15f), new Wave(tankyEnemy.gameObject, 9, 0.2f)};
 
         instance = this;
 
@@ -79,11 +84,11 @@ public class WaveLayoutManager : MonoBehaviour
     IEnumerator SpawnWave()
     {
 
-        for (int i = 0; i < Math.Ceiling(Math.Pow(Math.E, waveNum) / 5) + 2; i++)
+        for (int i = 0; i < waves[waveNum - 1].count; i++)
         {
 
-            SpawnEnemy();
-            yield return new WaitForSeconds(0.3f);
+            SpawnEnemy(waves[waveNum - 1].enemyType);
+            yield return new WaitForSeconds(waves[waveNum - 1].spawnRate);
 
         }
 
@@ -92,10 +97,10 @@ public class WaveLayoutManager : MonoBehaviour
 
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy(GameObject enemy)
     {
 
-        Instantiate(enemyPrefab, spawnPointPart.position, spawnPointPart.rotation);
+        Instantiate(enemy, spawnPointPart.position, spawnPointPart.rotation);
         enemiesPresent++;
 
     }
