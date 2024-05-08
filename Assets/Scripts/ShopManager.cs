@@ -46,9 +46,9 @@ public class ShopManager : MonoBehaviour
 
         // initialize the items for each tier
         commonItemList = new string[] { "Auto\nSear", "HP\nRounds", "Tracking\nModule" };
-        rareItemList = new string[] { "Unstable\nMunitions" };
+        rareItemList = new string[] { "Unstable\nMunitions", "Tax\nFraud"};
         // set up the item ID cheat sheet
-        itemIDHolder = new Dictionary<string, int> { {"Auto\nSear", 1}, {"HP\nRounds", 2}, {"Tracking\nModule", 3}, {"Unstable\nMunitions", 4} };
+        itemIDHolder = new Dictionary<string, int> { { "Auto\nSear", 1 }, { "HP\nRounds", 2 }, { "Tracking\nModule", 3 }, { "Unstable\nMunitions", 4 }, { "Tax\nFraud", 5 } };
 
     }
 
@@ -83,7 +83,7 @@ public class ShopManager : MonoBehaviour
                 }
 
                 // set the price using an exponential scaling formula(50 base)
-                optionScript.price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.15f) * 50);
+                optionScript.price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.1f) * 50);
                 option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
             
 
@@ -105,7 +105,7 @@ public class ShopManager : MonoBehaviour
                 }
 
                 // set the price using an exponential scaling formula(75 base)
-                option.GetComponent<ShopOptionManager>().price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.15f) * 75);
+                option.GetComponent<ShopOptionManager>().price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.1f) * 75);
                 option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
 
             }/* else if (roll >= 99.0f) {

@@ -37,7 +37,7 @@ public class ItemInventoryManager : MonoBehaviour
         // if there is none, initialize things
         instance = this;
         towerNames = new string[]{ "Gatling", "Sniper" , "Rocket" };
-        defaultItemCounts = new int[][]{ (new int[] { 1, 0 }), (new int[] { 2, 0 }), (new int[] { 3, 0 }), (new int[] { 4, 0 })};
+        defaultItemCounts = new int[][]{ (new int[] { 1, 0 }), (new int[] { 2, 0 }), (new int[] { 3, 0 }), (new int[] { 4, 0 }), (new int[] { 5, 0 }) };
 
     }
 

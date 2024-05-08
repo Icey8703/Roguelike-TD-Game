@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -9,6 +10,7 @@ public class EconomyManager : MonoBehaviour
     
     // fields
     public static EconomyManager instance;
+    private ItemInventoryManager inventories;
     public float bank;
     public BankManager bankText;
 
@@ -37,6 +39,7 @@ public class EconomyManager : MonoBehaviour
 
         // get the bank text script
         bankText = BankManager.instance;
+        inventories = ItemInventoryManager.instance;
 
     }
 
@@ -53,7 +56,7 @@ public class EconomyManager : MonoBehaviour
     public void gainMoney(float money)
     {
 
-        bank += money;
+        bank += money * (1 + (inventories.GetTowerItems("Gatling")[4][1] * 0.15f));
         bankText.UpdateText("$" + bank.ToString());
 
     }
