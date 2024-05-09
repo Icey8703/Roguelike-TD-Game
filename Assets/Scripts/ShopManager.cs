@@ -83,7 +83,7 @@ public class ShopManager : MonoBehaviour
                 }
 
                 // set the price using an exponential scaling formula(50 base)
-                optionScript.price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.1f) * 50);
+                optionScript.price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.025f) * 50);
                 option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
             
 
@@ -105,7 +105,7 @@ public class ShopManager : MonoBehaviour
                 }
 
                 // set the price using an exponential scaling formula(75 base)
-                option.GetComponent<ShopOptionManager>().price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.1f) * 75);
+                option.GetComponent<ShopOptionManager>().price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.025f) * 75);
                 option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
 
             }/* else if (roll >= 99.0f) {

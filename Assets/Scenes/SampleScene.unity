@@ -4093,7 +4093,7 @@ MonoBehaviour:
   tankyEnemy: {fileID: 5726449419939723829, guid: 91e1930d96cb3b34186bbc33d7eb0d01, type: 3}
   spawnPointPart: {fileID: 837291900}
   WaveCountdownTimer: {fileID: 1049600902}
-  waveTimeGapScale: 30
+  waveTimeGapScale: 15
   waveNum: 1
   refreshCountdown: 1
 --- !u!4 &558930842

@@ -41,8 +41,8 @@ public class WaveLayoutManager : MonoBehaviour
         }
 
         waves = new Wave[] { new Wave(normalEnemy.gameObject, 6, 0.3f), new Wave(normalEnemy.gameObject, 10, 0.2f),
-            new Wave(fastEnemy.gameObject, 8, 0.35f), new Wave(fastEnemy.gameObject, 12, 0.15f),
-            new Wave(tankyEnemy.gameObject, 9, 0.2f), new Wave(fastEnemy.gameObject, 18, 0.075f),
+            new Wave(fastEnemy.gameObject, 14, 0.15f), new Wave(fastEnemy.gameObject, 18, 0.15f),
+            new Wave(tankyEnemy.gameObject, 10, 0.2f), new Wave(fastEnemy.gameObject, 22, 0.075f),
             new Wave(tankyEnemy.gameObject, 14, 0.1f), new Wave(normalEnemy.gameObject, 20, 0.01f) };
 
         instance = this;
@@ -101,13 +101,13 @@ public class WaveLayoutManager : MonoBehaviour
         } else
         {
 
-            for (int i = 0; i < Mathf.CeilToInt(Mathf.Pow(waveNum, UnityEngine.Random.Range(1.1f, 1.25f)) / 1.1f); i++)
+            for (int i = 0; i < Mathf.CeilToInt(Mathf.Pow(waveNum * 1.75f, UnityEngine.Random.Range(1.1f, 1.25f))); i++)
             {
 
                 int randomEnemyValue = Mathf.CeilToInt(UnityEngine.Random.Range(0.01f, 3f));
                 SpawnEnemy((randomEnemyValue == 1 ? normalEnemy.gameObject : 
                     (randomEnemyValue == 2 ? fastEnemy.gameObject : tankyEnemy.gameObject)));
-                yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.25f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(0.075f, 0.15f));
 
             }
 
