@@ -4091,6 +4091,8 @@ MonoBehaviour:
   normalEnemy: {fileID: 4519908305791868488, guid: 92d4c85b8035f014a867a79831241da1, type: 3}
   fastEnemy: {fileID: 3596457207139097052, guid: c6fc63795f13bdb44accbfa30b848e73, type: 3}
   tankyEnemy: {fileID: 5726449419939723829, guid: 91e1930d96cb3b34186bbc33d7eb0d01, type: 3}
+  minibossEnemy: {fileID: 5896033366416167648, guid: 6bf7acbe58a33004898e228bdc776239, type: 3}
+  bossEnemy: {fileID: 22559383503671344, guid: e414dd0a5f58d434dbc0fe2f562ac167, type: 3}
   spawnPointPart: {fileID: 837291900}
   WaveCountdownTimer: {fileID: 1049600902}
   waveTimeGapScale: 15

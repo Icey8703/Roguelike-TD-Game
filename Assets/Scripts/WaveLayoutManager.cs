@@ -16,6 +16,8 @@ public class WaveLayoutManager : MonoBehaviour
     public Transform normalEnemy;
     public Transform fastEnemy;
     public Transform tankyEnemy;
+    public Transform minibossEnemy;
+    public Transform bossEnemy;
     public Transform spawnPointPart;
 
     public TextMeshProUGUI WaveCountdownTimer;
@@ -43,7 +45,8 @@ public class WaveLayoutManager : MonoBehaviour
         waves = new Wave[] { new Wave(normalEnemy.gameObject, 6, 0.3f), new Wave(normalEnemy.gameObject, 10, 0.2f),
             new Wave(fastEnemy.gameObject, 14, 0.15f), new Wave(fastEnemy.gameObject, 18, 0.15f),
             new Wave(tankyEnemy.gameObject, 10, 0.2f), new Wave(fastEnemy.gameObject, 22, 0.075f),
-            new Wave(tankyEnemy.gameObject, 14, 0.1f), new Wave(normalEnemy.gameObject, 20, 0.01f) };
+            new Wave(tankyEnemy.gameObject, 14, 0.1f), new Wave(normalEnemy.gameObject, 20, 0.01f),
+            new Wave(minibossEnemy.gameObject, 6, 0.3f), new Wave(bossEnemy.gameObject, 2, 1.0f) };
 
         instance = this;
 
@@ -110,6 +113,8 @@ public class WaveLayoutManager : MonoBehaviour
                 yield return new WaitForSeconds(UnityEngine.Random.Range(0.075f, 0.15f));
 
             }
+
+            SpawnEnemy(bossEnemy.gameObject);
 
         }
 
