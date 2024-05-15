@@ -90,7 +90,7 @@ public class EnemyMovementScript : MonoBehaviour
         }
 
         // lower health accordingly
-        health -= Mathf.CeilToInt(damageDealt / (WaveLayoutManager.instance.waveNum > 10 ? (1.005f * (WaveLayoutManager.instance.waveNum - 5)) : 1));
+        health -= Mathf.CeilToInt(damageDealt < WaveLayoutManager.instance.waveNum ? 1 : (damageDealt - WaveLayoutManager.instance.waveNum));
 
         // if the enemy is dead, destroy it
         /* this had to be checked beforehand since sometimes there would be money gained before the
