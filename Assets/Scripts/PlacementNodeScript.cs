@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 // Manages the placement nodes in the scene
@@ -14,6 +15,7 @@ public class PlacementNodeScript : MonoBehaviour
     public Color defaultColor;
     private Vector3 placementOffset;
     [SerializeField] private GameObject tower;
+    private GameObject towerSchematic;
     TowerPlacementManager placementManager;
 
     // Start is called before the first frame update
@@ -100,6 +102,8 @@ public class PlacementNodeScript : MonoBehaviour
             return;
 
         }
+
+
 
         // set the material color to the specified color(red as specified in the properties)
         rend.material.color = hoveredColor;

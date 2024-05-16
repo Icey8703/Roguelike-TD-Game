@@ -114,7 +114,28 @@ public class WaveLayoutManager : MonoBehaviour
 
             }
 
-            SpawnEnemy(bossEnemy.gameObject);
+            if (waveNum % 15 == 0)
+            {
+
+                for (int i = 0; i < 3 * (waveNum / 15); i++)
+                {
+
+                    SpawnEnemy(minibossEnemy.gameObject);
+                    yield return new WaitForSeconds(0.2f);
+
+                }
+
+                yield return new WaitForSeconds(0.25f);
+
+                for (int i = 0; i < (waveNum / 15); i++)
+                {
+
+                    SpawnEnemy(bossEnemy.gameObject);
+                    yield return new WaitForSeconds(0.3f);
+
+                }
+
+            }
 
         }
 

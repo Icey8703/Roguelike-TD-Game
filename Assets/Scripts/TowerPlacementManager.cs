@@ -12,9 +12,13 @@ public class TowerPlacementManager : MonoBehaviour
 
     // currently selected towerObject and all of the towers that exist in the game
     [SerializeField] private GameObject towerObject;
+    [SerializeField] private GameObject towerSchem;
     public GameObject GatlingSentry;
     public GameObject SniperSentry;
     public GameObject RocketSentry;
+    public GameObject GatlingSchem;
+    public GameObject SniperSchem;
+    public GameObject RocketSchem;
     [SerializeField] private int towerPrice;
 
 
@@ -49,6 +53,13 @@ public class TowerPlacementManager : MonoBehaviour
     {
 
         return towerObject;
+
+    }
+
+    public GameObject getSchematic()
+    {
+
+        return towerSchem;
 
     }
 
