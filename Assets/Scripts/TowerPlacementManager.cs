@@ -20,6 +20,7 @@ public class TowerPlacementManager : MonoBehaviour
     public GameObject SniperSchem;
     public GameObject RocketSchem;
     [SerializeField] private int towerPrice;
+    public GameObject rangeObject;
 
 
     // before the application starts
@@ -40,11 +41,12 @@ public class TowerPlacementManager : MonoBehaviour
 
     }
 
-    public void SetTowerObject(GameObject tower, int price)
+    public void SetTowerObject(GameObject tower, int price, GameObject schem)
     {
 
         towerObject = tower;
         towerPrice = price;
+        towerSchem = schem;
 
     }
 
@@ -56,7 +58,7 @@ public class TowerPlacementManager : MonoBehaviour
 
     }
 
-    public GameObject getSchematic()
+    public GameObject GetSchematic()
     {
 
         return towerSchem;

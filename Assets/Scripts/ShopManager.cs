@@ -16,6 +16,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private string[] commonItemList;
     [SerializeField] private string[] rareItemList;
     [SerializeField] private Dictionary<string, int> itemIDHolder;
+    [SerializeField] private Dictionary<int, string> itemDescHolder;
     private void Awake()
     {
 
@@ -49,6 +50,9 @@ public class ShopManager : MonoBehaviour
         rareItemList = new string[] { "Unstable\nMunitions", "Tax\nFraud"};
         // set up the item ID cheat sheet
         itemIDHolder = new Dictionary<string, int> { { "Auto\nSear", 1 }, { "HP\nRounds", 2 }, { "Tracking\nModule", 3 }, { "Unstable\nMunitions", 4 }, { "Tax\nFraud", 5 } };
+        // set up item description cheat sheet
+        // FINISH THIS BROOOOOO YOU IDIOT YOU ABSOLUTE STUPID IDIOT MORON
+        itemDescHolder = new Dictionary<int, string> { { 1, "+10% attack speed per stack" }, { 1, "+0.5 flat damage per stack" }, { 3, "+5% range per stack" }, { 4, "" } };
 
     }
 
@@ -69,7 +73,9 @@ public class ShopManager : MonoBehaviour
             {
 
                 Transform optionName = option.Find("Name");
+                Transform optionDesc = option.Find("Description");
                 TextMeshProUGUI optionNameText = optionName.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI optionDescText = optionDesc.GetComponent<TextMeshProUGUI>();
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, commonItemList.Length));
                 optionNameText.SetText(commonItemList[randItemIndex]);
 

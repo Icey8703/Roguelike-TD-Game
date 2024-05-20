@@ -25,22 +25,21 @@ public class TowerShop : MonoBehaviour
     {
 
         // set the tower object to the gatling sentry for placement
-        towerPlacer.SetTowerObject(towerPlacer.GatlingSentry, price);
-
+        towerPlacer.SetTowerObject(towerPlacer.GatlingSentry, price, towerPlacer.GatlingSchem);
 
     }
 
     public void BuySniper()
     {
 
-        towerPlacer.SetTowerObject(towerPlacer.SniperSentry, price);
+        towerPlacer.SetTowerObject(towerPlacer.SniperSentry, price, towerPlacer.SniperSchem);
 
     }
 
     public void BuyRocket()
     {
 
-        towerPlacer.SetTowerObject(towerPlacer.RocketSentry, price);
+        towerPlacer.SetTowerObject(towerPlacer.RocketSentry, price, towerPlacer.RocketSchem);
 
     }
 

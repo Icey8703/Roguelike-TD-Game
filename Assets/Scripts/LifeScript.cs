@@ -31,13 +31,13 @@ public class LifeScript : MonoBehaviour
 
         lives -= amount;
 
-        textObj.text = lives.ToString() + "Lives";
+        textObj.text = lives.ToString() + " Lives";
 
         if (lives <= 0f)
         {
 
             Debug.Log("haha you have to restart game you died loser");
-            Time.timeScale = 0.00001f;
+            Time.timeScale = 0.1f;
             lossImage.SetActive(true);
             return;
 

@@ -17,6 +17,9 @@ public class PlacementNodeScript : MonoBehaviour
     [SerializeField] private GameObject tower;
     private GameObject towerSchematic;
     TowerPlacementManager placementManager;
+    [SerializeField] private GameObject schematicDisplayed;
+    [SerializeField] private GameObject rangeDisplayed;
+    public GameObject rangeObj;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +30,21 @@ public class PlacementNodeScript : MonoBehaviour
         defaultColor = rend.material.color;
         // identifies the placement manager instance
         placementManager = TowerPlacementManager.instance;
+        rangeObj = placementManager.rangeObject;
 
     }
 
     // when the mouse is clicked on the node
     private void OnMouseDown()
     {
+
+        if (schematicDisplayed != null && rangeDisplayed != null)
+        {
+
+            Destroy(schematicDisplayed);
+            Destroy(rangeDisplayed);
+
+        }
 
         // conditional statements to prevent issues with the shop, and being unable to afford the tower
         if (ShopManager.shopInstance.gameObject.activeSelf || placementManager.GetTowerForPlacement() == null)
@@ -45,7 +57,7 @@ public class PlacementNodeScript : MonoBehaviour
 
             Debug.Log("cannot afford tower");
             rend.material.color = defaultColor;
-            placementManager.SetTowerObject(null, 0);
+            placementManager.SetTowerObject(null, 0, null);
             return;
 
         }
@@ -61,33 +73,30 @@ public class PlacementNodeScript : MonoBehaviour
         }
 
         // if the tower field is null, get the tower for placement from the Director
-        GameObject towerToPlace = TowerPlacementManager.instance.GetTowerForPlacement();
+        GameObject towerToPlace = placementManager.GetTowerForPlacement();
 
         // set the placement offset based on the tower(my modeling is wacky)
-        if (towerToPlace == TowerPlacementManager.instance.SniperSentry)
+        if (towerToPlace == placementManager.SniperSentry)
         {
 
             placementOffset = new Vector3(0f, 1.75f, 0f);
 
-        } else if (towerToPlace == TowerPlacementManager.instance.GatlingSentry)
+        } else if (towerToPlace == placementManager.GatlingSentry)
         {
 
             placementOffset = new Vector3(0f, 1.175f, -5f);
 
-        } else if (towerToPlace == TowerPlacementManager.instance.RocketSentry)
+        } else if (towerToPlace == placementManager.RocketSentry)
         {
 
             placementOffset = new Vector3(0f, 2.5f, 0f);
 
         }
 
-        // instantiate the tower on the node with the offset
-        Instantiate(towerToPlace, transform.position + placementOffset, transform.rotation);
-        // Set the tower field so towers can't be stacked
-        tower = towerToPlace;
+        tower = Instantiate(towerToPlace, transform.position + placementOffset, transform.rotation);
         EconomyManager.instance.makePurchase(placementManager.GetPrice());
         rend.material.color = defaultColor;
-        placementManager.SetTowerObject(null, 0);
+        placementManager.SetTowerObject(null, 0, null);
 
     }
 
@@ -103,7 +112,32 @@ public class PlacementNodeScript : MonoBehaviour
 
         }
 
+        GameObject towerToPlace = placementManager.GetTowerForPlacement();
 
+        if (towerToPlace == placementManager.SniperSentry)
+        {
+
+            placementOffset = new Vector3(0f, 1.75f, 0f);
+
+        }
+        else if (towerToPlace == placementManager.GatlingSentry)
+        {
+
+            placementOffset = new Vector3(0f, 1.175f, -5f);
+
+        }
+        else if (towerToPlace == placementManager.RocketSentry)
+        {
+
+            placementOffset = new Vector3(0f, 2.5f, 0f);
+
+        }
+
+        towerSchematic = placementManager.GetSchematic();
+
+        schematicDisplayed = Instantiate(towerSchematic, transform.position + placementOffset, transform.rotation);
+        rangeDisplayed = Instantiate(rangeObj, transform.position, transform.rotation);
+        rangeDisplayed.transform.localScale = new Vector3(towerToPlace.GetComponent<TowerScript>().range * 2, 0.05f, towerToPlace.GetComponent<TowerScript>().range * 2);
 
         // set the material color to the specified color(red as specified in the properties)
         rend.material.color = hoveredColor;
@@ -125,6 +159,14 @@ public class PlacementNodeScript : MonoBehaviour
         {
 
             return;
+
+        }
+        
+        if (schematicDisplayed != null && rangeDisplayed != null)
+        {
+
+            Destroy(schematicDisplayed);
+            Destroy(rangeDisplayed);
 
         }
 
