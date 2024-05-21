@@ -52,7 +52,7 @@ public class ShopManager : MonoBehaviour
         itemIDHolder = new Dictionary<string, int> { { "Auto\nSear", 1 }, { "HP\nRounds", 2 }, { "Tracking\nModule", 3 }, { "Unstable\nMunitions", 4 }, { "Tax\nFraud", 5 } };
         // set up item description cheat sheet
         // FINISH THIS BROOOOOO YOU IDIOT YOU ABSOLUTE STUPID IDIOT MORON
-        itemDescHolder = new Dictionary<int, string> { { 1, "+10% attack speed per stack" }, { 1, "+0.5 flat damage per stack" }, { 3, "+5% range per stack" }, { 4, "" } };
+        itemDescHolder = new Dictionary<int, string> { { 1, "+10% attack speed per stack" }, { 2, "+0.5 flat damage per stack" }, { 3, "+5% range per stack" }, { 4, "10% chance on attack to deal +100% damage (+100% per stack)" }, { 5, "+15% cash generation per stack" } };
 
     }
 
@@ -72,8 +72,8 @@ public class ShopManager : MonoBehaviour
             if (roll <= 73.2f)
             {
 
-                Transform optionName = option.Find("Name");
-                Transform optionDesc = option.Find("Description");
+                Transform optionName = option.GetChild(2);
+                Transform optionDesc = option.GetChild(3);
                 TextMeshProUGUI optionNameText = optionName.GetComponent<TextMeshProUGUI>();
                 TextMeshProUGUI optionDescText = optionDesc.GetComponent<TextMeshProUGUI>();
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, commonItemList.Length));
@@ -88,6 +88,8 @@ public class ShopManager : MonoBehaviour
 
                 }
 
+                optionDescText.SetText(itemDescHolder[optionScript.currItemID]);
+
                 // set the price using an exponential scaling formula(50 base)
                 optionScript.price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.025f) * 50);
                 option.Find("Price").GetComponent<TextMeshProUGUI>().text = optionScript.price.ToString();
@@ -96,8 +98,10 @@ public class ShopManager : MonoBehaviour
             } else // if (roll >= 73.2f && roll <= 99.0f)
             {
 
-                Transform optionName = option.Find("Name");
+                Transform optionName = option.GetChild(2);
+                Transform optionDesc = option.GetChild(3);
                 TextMeshProUGUI optionNameText = optionName.GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI optionDescText = optionDesc.GetComponent<TextMeshProUGUI>();
                 int randItemIndex = Mathf.FloorToInt(Random.Range(0, rareItemList.Length));
                 optionNameText.SetText(rareItemList[randItemIndex]);
 
@@ -109,6 +113,8 @@ public class ShopManager : MonoBehaviour
                     return;
 
                 }
+
+                optionDescText.SetText(itemDescHolder[optionScript.currItemID]);
 
                 // set the price using an exponential scaling formula(75 base)
                 option.GetComponent<ShopOptionManager>().price = Mathf.Ceil(Mathf.Pow(WaveLayoutManager.instance.waveNum, 1.025f) * 75);
