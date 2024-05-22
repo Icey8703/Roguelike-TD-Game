@@ -26,7 +26,7 @@ public class WaveLayoutManager : MonoBehaviour
     public static WaveLayoutManager instance;
 
     public float waveTimeGapScale = 15f;
-    private float generalCountdown = 2f;
+    private float generalCountdown = 15f;
     public int waveNum = 1;
     [SerializeField] private int refreshCountdown = 1;
     private bool allSpawned = false;

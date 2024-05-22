@@ -3754,7 +3754,7 @@ GameObject:
   - component: {fileID: 452882410}
   - component: {fileID: 452882409}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: GameCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15986,7 +15986,7 @@ GameObject:
   - component: {fileID: 2031163852}
   - component: {fileID: 2031163851}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LossImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16918,7 +16918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818624599176327297, guid: 5611d32cefd7047489ced010526c0686, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -323
+      value: 333
       objectReference: {fileID: 0}
     - target: {fileID: 2818624599176327297, guid: 5611d32cefd7047489ced010526c0686, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -18698,7 +18698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2822026193511688263, guid: e400464ba3cb64b49bed98307128defd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 334
+      value: -313
       objectReference: {fileID: 0}
     - target: {fileID: 2822026193511688263, guid: e400464ba3cb64b49bed98307128defd, type: 3}
       propertyPath: m_AnchoredPosition.y
