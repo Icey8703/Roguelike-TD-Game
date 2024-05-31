@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// causes the title to rotate, not a significant part of my project
+// code adjusted from https://forum.unity.com/threads/rotate-object-back-and-forth-x-degrees.375899/
 public class TitleScript : MonoBehaviour
 {
 
