@@ -34,15 +34,17 @@ public class EnemyMovementScript : MonoBehaviour
         // calculate the direction it must move, the distance to its next waypoint, and translate it toward it
         UnityEngine.Vector3 direction = target.position - transform.position;
         distanceToNextWaypoint = direction.magnitude;
-        transform.Translate(direction.normalized * movementSpeed * Time.deltaTime, Space.World);
-
-        // if it's at the waypoint, get the next waypoint to move to
-        if (UnityEngine.Vector3.Distance(transform.position, target.position) <= 0.22f)
+        if (direction.magnitude <= (direction.normalized * movementSpeed * Time.deltaTime).magnitude)
         {
 
+            transform.position = target.position;
             GetNextWaypoint();
+            return;
 
         }
+
+        transform.Translate(direction.normalized * movementSpeed * Time.deltaTime, Space.World);
+
 
     }
 
@@ -90,7 +92,7 @@ public class EnemyMovementScript : MonoBehaviour
         }
 
         // lower health accordingly
-        health -= Mathf.CeilToInt(damageDealt - (WaveLayoutManager.instance.waveNum * 0.15f) < 1 ? 1 : (damageDealt - (WaveLayoutManager.instance.waveNum * 0.15f)));
+        health -= Mathf.CeilToInt(damageDealt - (WaveLayoutManager.instance.waveNum * 0.15f) < 0.1f ? 0.1f : (damageDealt - (WaveLayoutManager.instance.waveNum * 0.15f)));
 
         // if the enemy is dead, destroy it
         /* this had to be checked beforehand since sometimes there would be money gained before the

@@ -21,11 +21,12 @@ public class WaveLayoutManager : MonoBehaviour
     public Transform spawnPointPart;
 
     public TextMeshProUGUI WaveCountdownTimer;
+    public TextMeshProUGUI WaveCounter;
     [SerializeField] private Wave[] waves;
 
     public static WaveLayoutManager instance;
 
-    public float waveTimeGapScale = 15f;
+    public float waveTimeGapScale = 10f;
     private float generalCountdown = 15f;
     public int waveNum = 1;
     [SerializeField] private int refreshCountdown = 1;
@@ -89,6 +90,8 @@ public class WaveLayoutManager : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
+
+        WaveCounter.text = "Wave" + waveNum;
 
         if (!(waves.Length - 1 < waveNum))
         {

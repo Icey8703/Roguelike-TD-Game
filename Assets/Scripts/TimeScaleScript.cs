@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+// Manages the scaling of time in the scene, will adjust based on the speed set by the user(1x, 1.5x, or 0.5x)
 public class TimeScaleScript : MonoBehaviour
 {
 
@@ -15,7 +17,8 @@ public class TimeScaleScript : MonoBehaviour
     {
 
         button.onClick.AddListener(changeSpeed);
-        speedIncrements = new Queue<float>(new[] { 1.0f, 1.5f, 2.0f});
+        speedIncrements = new Queue<float>(new[] { 1.0f, 1.5f, 0.5f});
+        Application.targetFrameRate = 60;
 
     }
 

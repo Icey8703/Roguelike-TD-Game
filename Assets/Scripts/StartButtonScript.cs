@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Starts the game by loading the game scene
 public class StartButtonScript : MonoBehaviour
 {
     public Button button;
