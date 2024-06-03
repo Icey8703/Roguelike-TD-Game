@@ -4229,7 +4229,7 @@ MonoBehaviour:
   bossEnemy: {fileID: 22559383503671344, guid: e414dd0a5f58d434dbc0fe2f562ac167, type: 3}
   spawnPointPart: {fileID: 837291900}
   WaveCountdownTimer: {fileID: 1049600902}
-  WaveCounter: {fileID: 0}
+  WaveCounter: {fileID: 1851489818}
   waveTimeGapScale: 15
   waveNum: 1
   refreshCountdown: 1

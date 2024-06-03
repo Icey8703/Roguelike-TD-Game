@@ -25,13 +25,6 @@ public class TimeScaleScript : MonoBehaviour
     void changeSpeed()
     {
 
-        if (Time.timeScale < 1.0f)
-        {
-
-            return;
-
-        }
-
         speedIncrements.Enqueue(speedIncrements.Dequeue());
         Time.timeScale = speedIncrements.Peek();
         text.text = speedIncrements.Peek() + "x\nSpeed";
