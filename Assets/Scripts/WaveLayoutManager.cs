@@ -91,7 +91,7 @@ public class WaveLayoutManager : MonoBehaviour
     IEnumerator SpawnWave()
     {
 
-        WaveCounter.text = "Wave" + waveNum;
+        WaveCounter.text = "Wave " + waveNum;
 
         if (!(waves.Length - 1 < waveNum))
         {

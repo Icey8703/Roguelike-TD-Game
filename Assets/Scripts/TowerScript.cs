@@ -112,7 +112,7 @@ public class TowerScript : MonoBehaviour
         TMPro.TMP_Dropdown targetingModeDropdown = targetingDropdownMenu.GetComponent<TMPro.TMP_Dropdown>();
         targetingModeIndex = targetingModeDropdown.value;
 
-        // if the targeting mode is set to close, calculate the closest enemy in range (this will take too long to comment i just cannot right now)
+        // if the targeting mode is set to close, calculate the closest enemy in range
         if (targetingModes[targetingModeIndex].Equals("close"))
         {
 
@@ -145,7 +145,7 @@ public class TowerScript : MonoBehaviour
 
             }
 
-        } // if it's set to first, calculate which enemy is the first while within range (this will take too long to comment i just cannot right now)
+        } // if it's set to first, calculate which enemy is the first while within range
         else if (targetingModes[targetingModeIndex].Equals("first"))
         {
             float firstEnemyWaypoint = -1;
