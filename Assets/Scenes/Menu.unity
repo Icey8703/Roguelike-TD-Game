@@ -693,7 +693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -7, y: 7}
+  m_AnchoredPosition: {x: -202.33, y: 7.005}
   m_SizeDelta: {x: 299.0385, y: 123.72}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &178269971
@@ -1746,7 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fa183fd8d8aab49b31ea3795dbed68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aboutMePanel: {fileID: 1762887772}
+  aboutPanel: {fileID: 1762887772}
 --- !u!114 &671648608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2034,11 +2034,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This game was made by me, Kieran Bayne, and this is my about me section
-    yippee yay woohoo! I have been coding for a few years, and playing video games
-    for even longer. I chose this to be my project since I have been enjoying a lot
-    of tower defense games recently, as well as roguelikes such as Risk of Rain 2(go
-    play it it''s amazing). '
+  m_text: "Kieran Bayne\nAdvanced Programming Topics\nPeriod 2\n\nNameless Roguelike
+    TD Game\nThis is a tower defense game that focuses on an unending gameplay loop
+    with randomly generated waves(past a certain point). It has a shop of items to
+    improve the towers' stats, different from the traditional static upgrades of
+    the tower defense genre.\nThis project was made with: \nUnity\nVisual Studio
+    2022\nBlender"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2065,7 +2066,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.85
+  m_fontSize: 26.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2287,8 +2288,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 14, y: 6}
-  m_SizeDelta: {x: 327.398, y: 124.72}
+  m_AnchoredPosition: {x: -202.61, y: 7}
+  m_SizeDelta: {x: 378.4924, y: 192.42}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1041630419
 MonoBehaviour:
@@ -2522,7 +2523,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: About Me
+  m_text: About
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b43611dc2afc238448f87d5728f6fe94, type: 2}
   m_sharedMaterial: {fileID: 2021168500792659552, guid: b43611dc2afc238448f87d5728f6fe94, type: 2}
@@ -2905,7 +2906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: About Me
+  m_text: About The Project
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3071,7 +3072,7 @@ GameObject:
   - component: {fileID: 1762887775}
   - component: {fileID: 1762887774}
   m_Layer: 5
-  m_Name: AboutMePanel
+  m_Name: AboutPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3448,8 +3449,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -174}
-  m_SizeDelta: {x: 980.87, y: 137.56}
+  m_AnchoredPosition: {x: 238.54, y: -189.66}
+  m_SizeDelta: {x: 503.8, y: 106.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899565324
 MonoBehaviour:
